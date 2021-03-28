@@ -62,6 +62,31 @@ As the reader may already be aware of, Arduino is an open-source electronics pla
 
 Among the infinitely many projects trying to achieve a similar result, the GrowBox controller project developed by Michele, in Red Sheep Labs\cite{growbox}, caught my attention as it allows configuration via server, CSV logs and uses Emoncms, this last tool was what interested me the most. As could be expected, GrowBox measures variables such as temperature, humidity, fan or lights. Emoncms is used in order to log and visualise this environmental data and it may come as a interesting asset for the further develop of this project.
 
-\section{Presupuesto}
+\section{Comparative chart}
+
+\begin{document}
+\begin{tikzpicture}
+\clip node (m) [matrix,matrix of nodes,
+fill=black!20,inner sep=0pt,
+nodes in empty cells,
+nodes={minimum height=1cm,minimum width=2.6cm,anchor=center,outer sep=0,font=\sffamily},
+row 1/.style={nodes={fill=black,text=white}},
+column 1/.style={nodes={fill=gray,text=white,align=right,text width=2.5cm,text depth=0.5ex}},
+column 2/.style={text width=4cm,align=center,every even row/.style={nodes={fill=white}}},
+column 3/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
+column 4/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
+column 5/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
+row 1 column 1/.style={nodes={fill=gray}},
+prefix after command={[rounded corners=4mm] (m.north east) rectangle (m.south west)}
+] {
+                & FarmOS                   & Agrineer          & PACA & GrowBox\\
+feature 1       &                          & --                & -- & -- \\
+feature 2       &                          & --                & -- & -- \\
+feature 3       &                          & --                & -- & -- \\
+feature 4       &                          & --                & -- & -- \\
+feature 5       &                          & --                & -- & -- \\
+};
+\end{tikzpicture}
+\end{document}
 
 \section{Conclusiones}
