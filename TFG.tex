@@ -1,0 +1,42 @@
+\documentclass[12pt]{report}
+
+% Paquetes LaTeX y estilos globales
+\input{etc/pkgs}
+\input{etc/style}
+
+% Comienzo del documento
+\begin{document}
+
+    % Portada y secciones no numeradas
+    \input{sections/00_portada}
+    \input{sections/00_agradecimientos}
+    \input{sections/00_abstract}
+    
+    % Índice del documento y de figuras
+    \begingroup
+        % Los enlaces son normalmente azules, pero en los índices se configuran a negro
+        % para que no aparezca todo azul
+        \hypersetup{linkcolor=black}
+        \tableofcontents
+        \listoffigures
+        \lstlistoflistings
+    \endgroup
+    
+    % Cambia el estilo de números de página a normal
+    \clearpage\pagenumbering{arabic}
+    
+    % Capítulos del trabajo
+    \input{sections/01_introduccion}
+    \input{sections/02_Estudio_Previo}
+    \input{sections/03_Analisis}
+    \input{sections/04_Diseño}
+    \input{sections/05_Implementacion}
+    \input{sections/06_Pruebas}
+     \input{sections/XX_Conclusiones}
+    
+    % Bibliografía
+    \bibliographystyle{plainnat}
+    \bibliography{bibliografia.bib}
+
+% Fin del documento
+\end{document}

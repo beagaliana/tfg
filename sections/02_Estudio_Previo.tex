@@ -1,0 +1,67 @@
+\chapter{Prior Study}\label{cap:planificación}
+
+\section{Introduction}
+Within this chapter, the projects that have served as a basis and inspiration for the realization of this thesis are going to be addressed. There is a wide variety of topics and implementations among them, some of them may be bigger iniciatives, some others just small personal projects carried out mainly for leisure.
+
+Finally, a comparative chart will assist in both the drawing of conclusions as well as an overview of the possible advantages, drawbacks and features regarding the different tools or projects at issue.
+
+\section{FarmOS}
+FarmOS project is, with no doubt, of great magnitude among the ones that are to be mentioned. It consist of a web-based application for agricultural management, planning, and record keeping.
+
+There are several aspects to be emphasised about this iniciative. See, for example, it offers modularity and scalability as it is entirely Drupal based. However, microcontrollers and IoT integration will shape the most remarkable part. Moreover, the fact that it is a free software project allows us not only to use and study the source code but also grants the possibility to improve and contribute to the project.
+
+We have installed FarmOS by using Drupal and Docker, as it was advised in the documentation. So as to test the basic features, we have created some profiles, added some animals and also mapped an area.
+
+This is an overview of how FarmOS looks like on a local server.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/tfg-farmos.png}
+    \caption{Main screen of FarmOS web application}
+    \label{fig:farmos}
+\end{figure}
+
+\section{Agrineer}
+Continuing with this very same philosophy about building free software, there exists quite an interesting project, Agrineer. They define themselves as an open source group of computational laboratories dedicated to projects that are both practical and educational, from satellite remote sensing to down-to-earth fablabs\cite{agrineer}.
+
+Currently, there are several tools they are working on, such as the Grow Degree Calculator (GDC) and the Soil Moisture Estimator (SME) applications. More detailed information can be found in their wiki.
+
+These tools, specially the SME application, may come in handy when processing, understanding and displaying data that will be collected using sensors.
+
+
+\section{Autonomous agricultural vehicles}
+When technological innovation in agriculture is addressed, autonomous or driverless tractors are often one of the things that may occur to us. There is nothing new in this idea, which as been around us for about 80 years now. John Deere's autonomous tractor\cite{deere-tractor} is a good example of this kind of vehicles, that may play a key role in the not too distant future.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig/deere-tractor.jpg}
+    \caption{John Deere’s autonomous electric tractor}
+    \label{fig:deere-tractor}
+\end{figure}
+
+\subsection{PACA, a prototype agricultural vehicle}
+Related to this topic, it is worth mentioning ``Computational applications in agriculture'' \cite{paca} by Carlos Gregorio Martín Pérez. In this thesis, PACA, a prototype agricultural vehicle is developed.
+
+The main purpose of PACA is to be able to facilitate the transportation of certain elements along the property. According to the author, PACA can be controlled both remotely as well as manually. It also features a drive system capable of carrying up to 200Kg and can operate independently for about 8 hours.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/paca.png}
+    \caption{Main components of PACA. Source: ``Computational applications in agriculture'' Bachelor's Thesis}
+    \label{fig:paca}
+\end{figure}
+
+ It is some of the PACA implementation that has served as an inspiration for the development of this very own thesis, more precisely, it has caught our attention the use of the microcontroller ESP8266 in order to create a wifi network so data transmission can be allowed. Although PACA uses a Raspberry single-board computer, it is still of our interest as it can be implemented in Arduino for this same goal.
+
+\section{Arduino controller for farming}
+After mentioning some iniciatives whose objective is transform modern agriculture by introducing technological devices and solutions, we will focus now in something a bit more concrete.
+
+As it has been mentioned before, the aim of this thesis is to be able to monitorise a garden. In order to achieve so, we need to program microcontrollers that will collect data from sensors, process it and display information or transform said data, if needed. The choices when speaking about microcontrollers are infinite, because of simplicity and the remarkable community, we are going to concentrate on Arduino.
+
+As the reader may already be aware of, Arduino is an open-source electronics platform able to perform a wide variety of tasks: reading inputs and turn it into an output, activating a motor, turning on an LED\cite{arduino}, etc.
+
+Among the infinitely many projects trying to achieve a similar result, the GrowBox controller project developed by Michele, in Red Sheep Labs\cite{growbox}, caught my attention as it allows configuration via server, CSV logs and uses Emoncms, this last tool was what interested me the most. As could be expected, GrowBox measures variables such as temperature, humidity, fan or lights. Emoncms is used in order to log and visualise this environmental data and it may come as a interesting asset for the further develop of this project.
+
+\section{Presupuesto}
+
+\section{Conclusiones}
