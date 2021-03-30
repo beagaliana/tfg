@@ -8,9 +8,22 @@ Finally, a comparative chart will assist in both the drawing of conclusions as w
 \section{FarmOS}
 FarmOS project is, with no doubt, of great magnitude among the ones that are to be mentioned. It consist of a web-based application for agricultural management, planning, and record keeping.
 
-There are several aspects to be emphasised about this iniciative. See, for example, it offers modularity and scalability as it is entirely Drupal based. However, microcontrollers and IoT integration will shape the most remarkable part. Moreover, the fact that it is a free software project allows us not only to use and study the source code but also grants the possibility to improve and contribute to the project.
+There are several aspects to be emphasised about this iniciative. See, for example, it offers modularity and scalability as it is entirely Drupal based. However, microcontrollers and IoT integration will shape the most remarkable part to us. Moreover, the fact that it is a free software project allows us not only to use and study the source code but also grants the possibility to improve and contribute to the project.
 
-We have installed FarmOS by using Drupal and Docker, as it was advised in the documentation. So as to test the basic features, we have created some profiles, added some animals and also mapped an area.
+\subsection{Structure}
+It is interesting to highlight the way in which farmOS is structured around the log concept. There exists four categories of diferent elements an administrator can create, they can be identified as the 4 W.
+\begin{itemize}
+	\item log (when) - these try to show what has happened over time, it is considered as the primary record. They can be mark as done/not done. Moreover, there are several categories of logs, with activities log being the most general. It implements some other features that might come in handy for conveniently recording data. For example, dates autoset by default to the date/time given by the system.
+	\item asset (what) - items that will be recorded in logs, planted in areas or managed by people. E.g.: livestock, plants, seeds, sensors, equipment, etc.
+	\item areas (where) - not absolutely needed, farmOS can perfectly function without any areas, but it is helpful for larger farmers that may need to use geo features. It allows to switch between base layers: OpenStreetMap and Google. An relevant feature useful for further customization: ability to divide a crop into beds and add more details to eacb bed.
+	\item people (who) - different people can be added with different roles that will grant them some permissions. The three roles that are implemented by the system are manager, worker and viewer, where the latter has read-only access.
+\end{itemize}
+
+In the big picture, farmOS is meant to be a database for the farmer to store information about the farm. However, it is meant to be as flexible and work on any scale. Whether we are talking about a very small urban vegetable garden some user might want to keep track of, or at the other side of the scale, a large farm with different managers, crops and so on.
+
+\subsection{Testing basic features}
+
+We have installed FarmOS by using Drupal and Docker, as it was advised in the documentation. So as to test the basic features, we have created some profiles, added some animals and planting and also mapped an area.
 
 This is an overview of how FarmOS looks like on a local server.
 
