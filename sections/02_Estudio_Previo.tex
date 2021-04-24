@@ -5,8 +5,8 @@ Within this chapter, the projects that have served as a basis and inspiration fo
 
 Finally, a comparative chart will assist in both the drawing of conclusions as well as an overview of the possible advantages, drawbacks and features regarding the different tools or projects at issue.
 
-\section{FarmOS}
-FarmOS project is, with no doubt, of great magnitude among the ones that are to be mentioned. It consists of a web-based application for agricultural management, planning, and record keeping.
+\section{farmOS}
+farmOS project consists of a web-based application for agricultural management, planning, and record keeping.
 
 There are several aspects to be emphasised about this iniciative. See, for example, it offers modularity and scalability as it is entirely Drupal based. However, microcontrollers and IoT integration will shape the most remarkable part to us. Moreover, the fact that it is a free software project allows us not only to use and study the source code but also grants the possibility to improve and contribute to the project.
 
@@ -15,10 +15,10 @@ Another positive aspect to take into account is its versatility, since it is a w
 \subsection{Structure}
 It is interesting to highlight the way in which farmOS is structured around the log concept. There exists four categories of diferent elements an administrator can create, they can be identified as the 4 W.
 \begin{itemize}
-	\item \textbf{log (when)} - these try to show what has happened over time, it is considered as the primary record. They can be mark as done/not done. Moreover, there are several categories of logs, with activities log being the most general. It implements some other features that might come in handy for conveniently recording data. For example, dates autoset by default to the date/time given by the system.
-	\item \textbf{asset (what)} - items that will be recorded in logs, planted in areas or managed by people. E.g.: livestock, plants, seeds, sensors, equipment, etc.
-	\item \textbf{areas (where)} - not absolutely needed, farmOS can perfectly function without any areas, but it is helpful for larger farmers that may need to use geo features. It allows to switch between base layers: OpenStreetMap and Google. A relevant feature useful for further customization: ability to divide a crop into beds and add more details to each bed.
-	\item \textbf{people (who)} - different people can be added with different roles that will grant them some permissions. The three roles that are implemented by the system are manager, worker and viewer, where the latter has read-only access.
+	\item \textbf{log (when)} - these try to show what has happened over time, it is considered as the primary record.
+	\item \textbf{asset (what)} - these could be understood as the things we are dealing with. E.g.: livestock, plants, seeds, sensors, equipment, etc.
+	\item \textbf{areas (where)} - it is helpful for larger farmers that may need to use geo features.
+	\item \textbf{people (who)} - different people can be added with different roles.
 \end{itemize}
 
 
@@ -38,63 +38,6 @@ Say a farmer has two areas with two different assets per area to keep track of. 
     \caption{An example of a web of associations created in farmOS dataset}
     \label{fig:farmos01}
 \end{figure}
-
-\newpage
-\subsection{Testing basic features}
-
-We have installed FarmOS by using Drupal and Docker, as it was advised in the documentation. So as to test the basic features, we have created some profiles, added some animals and planting and also mapped an area.
-
-This is an overview of how FarmOS looks like on a local server.
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.75\textwidth]{fig/tfg-farmos.png}
-    \caption{Main screen of FarmOS web application}
-    \label{fig:farmos}
-\end{figure}
-
-
-\addcontentsline{toc}{subsubsection}{Adding elements to farmOS}
-\subsubsection*{Adding elements to farmOS}
-In order to try some of the basic features, we will add some assets, some people with different roles and also an area.
-For each action taken, a different log as been created, marked with the tag "done".
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.95\textwidth]{fig/area.png}
-    \caption{New area in farmOS}
-    \label{fig:area}
-\end{figure}
-
-This is what a new area looks like. As it is shown in the image, the property can be fenced in. Some more information can be added such as seeding, transplanting, tests or just some generic observations. All this information will be recorded in farmOS as logs as well.
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.6\textwidth]{fig/people.png}
-    \caption{Section on different people profiles}
-    \label{fig:people}
-\end{figure}
-
-Regarding the creation of roles, farmOS is design around three main roles. However, as it is all built on top of Drupal, new roles can always be added if needed.
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.70\textwidth]{fig/assets.png}
-    \caption{A main view on assets section}
-    \label{fig:assets}
-\end{figure}
-As it was said before, everything that can be understood as a ``what'' is considered to be an asset, this is defined by the asset type. Every asset is also related to the areas in the ``Location'' tag. This kind of relationships will eventually create the web of associations that has already been mentioned. For this example, we have added some assets of domestic pets as animals and some plants from a tiny urban garden.
-
-\newpage
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.70\textwidth]{fig/logs.png}
-    \caption{A main view on logs}
-    \label{fig:logs}
-\end{figure}
-
-Logs are the primary records as they shown what has happened over time. As it happened with the assets, logs have the ability to link assets, areas and people all together. There are different logs depending on what we are trying to have recorded. Activity logs are the most generals but there are also observation logs that may be useful when writing down extra information such as when did seed started to germinate or at what specific rate.
 
 
 \section{Agrineer}
