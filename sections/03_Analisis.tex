@@ -16,15 +16,15 @@ A chart below is attached in order to give a visual estimation of the costs.
 \begin{table}[]
 \begin{tabular}{llll}
 \hline
-	\color{purple} 
-		     & \textbf{Quantity}& \textbf{Price per unit (euro)}& \textbf{Total} \\ \hline
-	\color{lightgrey} 
+	\rowcolor{lightpurple} 
+	& \textbf{Quantity}& \textbf{Price per unit (euro)}& \textbf{Total} \\ \hline
+	\rowcolor{lightgray} 
 Arduino ATMega board & 1                                        & 35                                                 & 35                                    \\
 FC-28 sensor         & 1                                        & 3                                                  & 3                                     \\
-	\color{lightgrey} 
+	\rowcolor{lightgray} 
 Photoresistor sensor & 1                                        &                                                    &                                       \\
 Raspberry Pi 4 2GB   & 1                                        & 43,95                                              & 43,95                                 \\
-\color{lightgrey} 
+\rowcolor{lightgray} 
 LEDs                 & 5                                        &                                                    &                                      
 \end{tabular}
 \end{table}
@@ -35,19 +35,31 @@ The graph attached below will give a visual distribution of the workload for the
 \begin{table}[]
 \begin{tabular}{llll}
 \hline
-        \color{purple}
-                     & \textbf{Hours} \\ \hline
-        \color{lightgrey}
-Arduino ATMega board & 1           \\
-FC-28 sensor         & 1           \\
-        \color{lightgrey}
-Photoresistor sensor & 1           \\
-Raspberry Pi 4 2GB   & 1           \\
-\color{lightgrey}
-LEDs                 & 5           
+        \rowcolor{lightpurple}
+                               \textbf{Task}   & \textbf{Hours} \\ \hline
+\rowcolor{lightgray}                                           
+Prior study                                     & 60           \\
+Structure of document                           & 1 \\
+\rowcolor{lightgray}                                           
+Read about Ubuntu install with ddev in Raspi    & 1           \\
+Sensor especification                           & 10           \\
+\rowcolor{lightgray}                                           
+Raspberry Pi install and config                 & 1           \\
+Write tests on Arduino sensor implementation    & - \\
+\rowcolor{lightgray}                                           
+Write tests on Raspberry install and config     & - \\  
+Make chart for budget                           & - \\
+\rowcolor{lightgray}                                           
+Sensor implementation                           & - \\
+Tests on sensors: checklists                    & - \\
+\rowcolor{lightgray}                                           
+Ethernet shield implementation                  & - \\
+Remote communication implementation             & - \\
+\rowcolor{lightgray}                                           
+farmOS installation                             & - \\
+Contribution to farmOS                          & -
 \end{tabular}
 \end{table}
-
 
 \section{Conclusions}
 One of the main conclusions that can be drawn from this section is that the main issue of this prototype is not merely economic, as might be thought, but focuses in offering a different way of managing a farm (or any other harvesting) that does not compromise the privacy and security of the user.
