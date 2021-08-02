@@ -11,20 +11,54 @@ This is because of the very nature of the project. As it has been mentioned befo
 It is in our interests, however, that a budget for the implementation of the prototype is estimated so if anyone might be interested in reproducing a model based precicsely on ours, can have a reliable reference on the economic costs.
 
 \section{Hardware budget}
-A chart below is attached in order to give a visual estimation of the costs.
+The charts below attached give a visual estimation of the costs.
+
+The hardware elements are categorised into different tables depending on the purpose they have served for the project. For example, a connector USB A to USB C will go into the Raspberry Pi table as it has been used for supplying with power the Raspberry Pi.
+
+All the components appearing in the table are provided with a link to the place where they have been adquired, or if borrowed, the place where they can be found.
+
+Besides the elements contained in the charts, for the realization of this project a laptop or computer, an extra monitor screen and a stable internet connection are required.
 
 \begin{table}[H]
+\caption{Arduino implementation}
 \begin{tabular}{llll}
 \hline
 	& \textbf{Quantity}& \textbf{Price per unit (euro)}& \textbf{Total} \\ \hline
-	\rowcolor{lightgray} 
-Arduino ATMega board & 1                                        & 35                                                 & 35                                    \\
-FC-28 sensor         & 1                                        & 3                                                  & 3                                     \\
-	\rowcolor{lightgray} 
-LDR sensor	     & 1                                        &                                                    &                                       \\
-Raspberry Pi 4 2GB   & 1                                        & 43,95                                              & 43,95                                 \\
-\rowcolor{lightgray} 
-LEDs                 & 5                                        &                                                    &                                      
+	\rowcolor{lightgray}
+\href{https://store.arduino.cc/arduino-mega-2560-rev3}{Arduino ATMega board} & 1                                        & 35                                                 & 35                                    \\
+\href{https://televoz.org/9496_128fc28_modulo-para-arduino-igrometro---sensor-de-humedad-fc28}{FC-28 sensor}         & 1                                        & 3                                                  & 3                                     \\
+	\rowcolor{lightgray}
+\href{https://televoz.org/5593_000ldr01_celula-fotoconductora-ldr-01}{LDR sensor}	     & 1                                        &0,30                                                    & 0,30                                      \\
+\href{https://televoz.org/4859_104bp001_placa-board-400-puntos-bp001}{Breadboard}	     & 2                                        & 3,25                                                    & 6,50                                      \\
+\rowcolor{lightgray}
+\href{https://televoz.org/4955_105led3rojo-ab_diodo-led-3-mm-rojo-alto-brillo}{Light-emitting diodes (LEDs)}                 & 5                                        &  0,35                                                  &1,75          \\
+\href{https://televoz.org/5551_001R_RESISTENCIA}{Resistor}                 & 5                                        &  0,15                                                  &1,75 \\
+\rowcolor{lightgray}
+\href{https://televoz.org/4861_104boardcab20_cable-para-board-20-cms-macho-macho-10-unidades}{Precut wires} & 2 & 2,75 & 5,50 \\
+\href{https://store.arduino.cc/arduino-ethernet-shield-2}{Ethernet Shield Arduino} & 1 & 21,50 & 21,50 \\
+\rowcolor{lightgray}
+\href{https://televoz.org/conexion-utp-cat6-5-00-mts-tr4000029}{UTP Cable} & 1 & 2,5 & 2,5 \\
+\textbf{Total} & & & 79,94 \\
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Raspberry Pi server}
+\begin{tabular}{llll}
+\hline
+	& \textbf{Quantity}& \textbf{Price per unit (euro)}& \textbf{Total} \\ \hline
+	\rowcolor{lightgray}
+\href{https://www.elcorteingles.es/electronica/A38457605-tarjeta-de-memoria-samsung-microsd-evo-plus-mb-mc64ha-64gb/#}{MicroSD card 64GB} & 1 & 15,99 & 15,99 \\
+\href{https://www.tiendatec.es/raspberry-pi/gama-raspberry-pi/1099-raspberry-pi-4-modelo-b-2gb-765756931175.html?src=raspberrypi}{Raspberry Pi 4 2GB}   & 1                                        & 44,95                                              & 44,95                                 \\
+\rowcolor{lightgray}
+\href{https://televoz.org/conexion-usb-tipo-a-macho-a-usb-c-1-00-mts}{USB A to USB C connection} & 1 & 3,50 & 3,50 \\
+\href{https://televoz.org/694_888con170n_adaptador-hdmi-hembra-a-micro-hdmi-macho-con170n}{HDMI to microHDMI adapter} & 1 & 2,55 & 2,55 \\
+\rowcolor{lightgray}
+\href{https://televoz.org/conexion-usb-tipo-a-macho-a-usb-c-1-00-mts}{USB A to USB C connection} & 1 & 3,50 & 3,50 \\
+\href{https://televoz.org/9230_992tv4000046_conexion-hdmi-macho-macho-1-00mts-tv40-00046}{HDMI connector} & 1 & 2,5 & 2,5 \\
+\rowcolor{lightgray}
+\href{https://televoz.org/teclado-usb-aqprox-appkbeco}{USB Keyboard} & 1 & 6,95 & 6,95 \\
+\textbf{Total} & & & 79,94 \\
 \end{tabular}
 \end{table}
 
