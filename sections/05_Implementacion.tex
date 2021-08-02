@@ -1,12 +1,21 @@
-\chapter{Implementation}\label{cap:implementacion}
+\chapter{Arduino sensor specification and implementation}\label{cap:implementacion}
 
 \section{Introduction}
-There are infinitely many ways of implementing sensors in a computer system. Internet of things is slowly becoming a topic that people interested in technology are talking about. For our particular case, we will be using an Arduino MEGA 2560 board
+There are infinitely many ways of implementing sensors in a computer system. Internet of things is slowly becoming a topic that people interested in technology are talking about. For our particular case, we will be using an Arduino MEGA 2560 board.
 
-\section {How it works}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/mega2560.jpg}
+    \caption{Arduino MEGA 2560 board}
+    \label{fig:mega2560}
+\end{figure}
 
-\section{Arduino}
-Let's talk a bit more about the ingredients needed for the implementation of the sensors. We know we will be working with an Arduino MEGA 2560 board, but it goes withoutsaying, we will also need some more components. 
+
+
+\section{Specifications}
+Let's take a look at some of the options that the different sensors offer. In this section we will specify some sensors in order to understand what these components are capable of, then, we will implement the two of them that are considered to be more crucial in harvesting, since those are the ones that we are interested in for this prototype. 
+
+We know we will be working with an Arduino MEGA 2560 board, but it goes without saying, we will also need some more components. 
 
 \subsection{FC-28 Soil Moisture Sensor}
 Soil moisture sensor is likely the main sensor when harvesting is concerned as it helps farmers manage their irrigation systems more efficiently. This won't only save water but will also increase the quality of the crops since it can control moisture to the milimeter at all diferent plant growth stages. In this section, we are going to be documenting the process of using the sensor FC-28 with our Arduino board.
@@ -14,7 +23,7 @@ Soil moisture sensor is likely the main sensor when harvesting is concerned as i
 \subsubsection{How does it work?}
 This FC-28 hygrometer module consists of two probes that measure the volumetric content of water. The current passes through the soil, which gives the resistance value between the metallic probes and measures the moisture value. The reason why this works fine is simple: the more water a soil has, the more electricity will be conducted which means less resistance.
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\textwidth]{fig/fc28.jpg}
     \caption{A FC-28 moisture sensor}
@@ -32,22 +41,36 @@ Let's implement a small script to understand the behaviour of the sensor. The ci
 	\item The GND of the FC-28 goes to GND of the Arduino
 	\item The pin A0 of the FC-28 goes to the pin A0 of the Arduino
 \end{itemize}
-This circuit looks like this:
-	\begin{figure}[htp]
+Here's a diagram of the circuit.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/fc28-scheme-circuit.png}
+    \caption{Diagram of the circuit for the FC-28}
+    \label{fig:fc28-scheme-circuit}
+\end{figure}
+
+
+This is how circuit should look like once assembled.
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.35\textwidth]{fig/fc28-circuit1.jpg}
-		\caption{fc28-circuit1}
+		\caption{Board for FC-28 connections}
 	\end{figure}
 	\hfill
-	\begin{figure}[htp]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.35\textwidth]{fig/fc28-circuit2.jpg}
-		\caption{fc28-circuit2}
+		\caption{LM293 comparator}
 	\end{figure}
 
 Now let's take a look at the script that is going to make the sensor work
 
 \lstinputlisting{arduino/fc28.ino}
+
+\subsubsection{Testing}
+
+(Aquí iria un checklist y unas capturas de pantalla del output)
 
 \subsection{LDR Sensor}
 LDR (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
@@ -61,7 +84,7 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 
 \subsubsection{Using the sensor}
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{fig/ldr-circuit.jpg}
     \caption{A LDR sensor}
@@ -70,6 +93,19 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 
 
 \lstinputlisting{arduino/ldr.ino}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/ldr-scheme-circuit.png}
+    \caption{LDR circuit diagram}
+    \label{fig:ldr}
+\end{figure}
+
+
+\subsubsection{Testing}
+
+\section{Implementation}
+By this point we have a general view of how sensors work and how to test some of its basic features. As it was mentioned before, from this point on we will focus on implementing moisture and FC-28 sensors. In this section we will take a look at a similar code that suits better the specific needs of this prototype. Later on we will talk about how to send the information collected in this sensors to our farmOS system.
 
 \section{Conclusions}
 

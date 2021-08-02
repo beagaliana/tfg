@@ -83,27 +83,21 @@ Among the infinitely many projects trying to achieve a similar result, the GrowB
 
 \section{Comparative chart}
 
-\begin{tikzpicture}
-\clip node (m) [matrix,matrix of nodes,
-fill=black!20,inner sep=0pt,
-nodes in empty cells,
-nodes={minimum height=1cm,minimum width=2.6cm,anchor=center,outer sep=0,font=\sffamily},
-row 1/.style={nodes={fill=black,text=white}},
-column 1/.style={nodes={fill=gray,text=white,align=right,text width=2.5cm,text depth=0.5ex}},
-column 2/.style={text width=4cm,align=center,every even row/.style={nodes={fill=white}}},
-column 3/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
-column 4/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
-column 5/.style={text width=3cm,align=center,every even row/.style={nodes={fill=white}},},
-row 1 column 1/.style={nodes={fill=gray}},
-prefix after command={[rounded corners=4mm] (m.north east) rectangle (m.south west)}
-] {
-                & FarmOS                   & Agrineer          & PACA & GrowBox\\
-feature 1       &                          & --                & -- & -- \\
-feature 2       &                          & --                & -- & -- \\
-feature 3       &                          & --                & -- & -- \\
-feature 4       &                          & --                & -- & -- \\
-feature 5       &                          & --                & -- & -- \\
-};
-\end{tikzpicture}
+\begin{table}[H]
+\begin{tabular}{llll}
+\hline
+    \rowcolor{lightpurple}
+	    & \textbf{farmOS}   & \textbf{Agrineer}& \textbf{PACA} \\ \hline
+    \rowcolor{lightgray}
+	    feature1 & 1        & 35               & 35                              \\
+	    feature2 & 1        & 3                & 3                             \\
+    \rowcolor{lightgray}
+	    f3       & 1        & -                & -                            \\
+	    f4       & 1        & 43,95            & 43,95          \\
+    \rowcolor{lightgray}
+	    f5       & 5        & -                & -
+\end{tabular}
+\end{table}
+
 
 \section{Conclusiones}
