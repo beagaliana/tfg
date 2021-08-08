@@ -72,6 +72,18 @@ Now let's take a look at the script that is going to make the sensor work
 
 (Aquí iria un checklist y unas capturas de pantalla del output)
 
+\subsection{Temperature sensor}
+The DHT11 sensor allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{fig/dht11.jpg}
+    \caption{A DHT11 sensor}
+    \label{fig:dht11}
+\end{figure}
+
+\subsection{Humidity sensor}
+
 \subsection{LDR Sensor}
 LDR (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
 
@@ -103,6 +115,29 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 
 
 \subsubsection{Testing}
+
+\subsection{PIR Motion sensor}
+Another interesting asset that is about to be specified is the passive infrared motion sensor. In a nutshell, it can detect movement of objects that radiate infrared light, like humans. Because of this, it's a sensor relatively common in security systems and it could really have a lot of applications in farming, specially if we are trying to detect intruders.
+
+Some other applications, less related to security, might include automatically switching ON and OFF several devices. See for example turning on a light when movement is detected, so the farmer or worker can forget about lighting and just focus in the main task.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\textwidth]{fig/pir.jpg}
+    \caption{Frontal view of PIR motion sensor}
+    \label{fig:pir}
+\end{figure}
+
+
+There are several models of PIR motion sensors, but they all work pretty much in the same way. Let's see a bit of that.
+
+\subsubsection{Using the sensor}
+
+\lstinputlisting{arduino/pir.ino}
+
+\subsection{Ultrasonic sensor}
+
+\lstinputlisting{arduino/ldr.ino}
 
 \section{Implementation}
 By this point we have a general view of how sensors work and how to test some of its basic features. As it was mentioned before, from this point on we will focus on implementing moisture and FC-28 sensors. In this section we will take a look at a similar code that suits better the specific needs of this prototype. Later on we will talk about how to send the information collected in this sensors to our farmOS system.
