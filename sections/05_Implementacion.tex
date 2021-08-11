@@ -147,10 +147,10 @@ This is how a PIR sensor looks like upside down.
 In this image, obtained from the Theory Circuit\cite{theory-circuit} blog, we can spot some parts of the sensor that are worth mentioning:
 
 \begin{itemize}
-	\item Time Delay Adjust. How long the output remains set to "1" after detecting motion.
-	\item Sensitivity Adjust. Sets the detection range.
-	\item Single Trigger Mode / Non-repeat Mode(L). Changes state every time a motion is detected. If we tried it in a practical example, we would see that the LED does not stay on when moving in front of the sensor, but turns on and off every second approximately. This is also called "non-retriggering". 
-	\item Repeat Trigger Mode(H). For this position the sensor will turn on every time motion is derected and turn off a bit after the last motion. The way this works is by reseting the timer every single time a motion is detected. This is also called "retriggering". This mode is preferable for most applications, and it is the one we will be using in this project.
+	\item \textbf{Time Delay Adjust.} How long the output remains set to "1" after detecting motion.
+	\item \textbf{Sensitivity Adjust.} Sets the detection range.
+	\item \textbf{Single Trigger Mode / Non-repeat Mode(L).} Changes state every time a motion is detected. If we tried it in a practical example, we would see that the LED does not stay on when moving in front of the sensor, but turns on and off every second approximately. This is also called "non-retriggering". 
+	\item \textbf{Repeat Trigger Mode(H).} For this position the sensor will turn on every time motion is derected and turn off a bit after the last motion. The way this works is by reseting the timer every single time a motion is detected. This is also called "retriggering". This mode is preferable for most applications, and it is the one we will be using in this project.
 \end{itemize}
 
 \subsubsection{Using the sensor}
@@ -172,8 +172,30 @@ Here's a few lines of code for the circuit below.
 \lstinputlisting{arduino/pir.ino}
 
 \subsection{Ultrasonic sensor}
+This ultrasonic distance sensor provides precise, non-contact distance measurements. It works in the same way as bats do: they emit quick and high-frequency sounds pulses, if they hit an object then then the signal comes back to the sensor.
 
-\lstinputlisting{arduino/ldr.ino}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.55\textwidth]{fig/ultrasonic.jpg}
+    \caption{An ultrasonic sensor from Seeedstudio}
+    \label{fig:ultrasonic}
+\end{figure}
+
+In the previous section, we have seen a PIR sensor. It is interesting to see which are the main differences between these two components that may seem similar but they definitely are not.
+
+	The main difference is the way in which they work: ultrasonic sensors use echolocation\cite{echolocation}, roughly that is the ability to find out the current location using reflected sound, 
+
+Further, more detailed specifications can be found in the datasheet\cite{ultrasonic-datasheet}
+		
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/ultrasonic-scheme-circuit.png}
+    \caption{Upside down view of PIR motion sensor}
+    \label{fig:ultrasonic-scheme-circuit}
+\end{figure}
+
+
+\lstinputlisting{arduino/ultrasonic.ino}
 
 \section{Implementation}
 By this point we have a general view of how sensors work and how to test some of its basic features. As it was mentioned before, from this point on we will focus on implementing moisture and FC-28 sensors. In this section we will take a look at a similar code that suits better the specific needs of this prototype. Later on we will talk about how to send the information collected in this sensors to our farmOS system.
