@@ -73,7 +73,7 @@ Now let's take a look at the script that is going to make the sensor work
 (Aquí iria un checklist y unas capturas de pantalla del output)
 
 \subsection{Temperature sensor}
-The DHT11 sensor allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box.
+The DHT11 sensor\cite{dht11-manual} allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box. In this section we will see how to measure temperature, in the following section we will focus in measuring humidity.
 
 \begin{figure}[H]
     \centering
@@ -81,6 +81,8 @@ The DHT11 sensor allows us to measure both temperature and humidity. It consists
     \caption{A DHT11 sensor}
     \label{fig:dht11}
 \end{figure}
+
+There are many applications for this sensor, it can be implemented as dehumidifier, for automatic control, data loggers or even weather stations. 
 
 \subsection{Humidity sensor}
 
@@ -117,9 +119,9 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 \subsubsection{Testing}
 
 \subsection{PIR Motion sensor}
-Another interesting asset that is about to be specified is the passive infrared motion sensor. In a nutshell, it can detect movement of objects that radiate infrared light, like humans. Because of this, it's a sensor relatively common in security systems and it could really have a lot of applications in farming, specially if we are trying to detect intruders.
+Another interesting asset that is about to be specified is the passive infrared motion sensor\cite{pir-guide}. In a nutshell, it can detect movement of objects that radiate infrared light, like humans. Because of this, and its eficiency and unexpensiveness, it's a sensor relatively common in security systems and it can have a lot of different applications in farming.
 
-Some other applications, less related to security, might include automatically switching ON and OFF several devices. See for example turning on a light when movement is detected, so the farmer or worker can forget about lighting and just focus in the main task.
+Some applications, besides of course the ones more related to security such as intruder detection, might include automatically switching ON and OFF several devices. See for example turning on a light when movement is detected, so the farmer or worker can forget about lighting and just focus in the main task.
 
 \begin{figure}[H]
     \centering
@@ -131,7 +133,41 @@ Some other applications, less related to security, might include automatically s
 
 There are several models of PIR motion sensors, but they all work pretty much in the same way. Let's see a bit of that.
 
+They usually have a VCC pin, a GND pin and a digital output. The spherical form of the sensor improves the viewing angle. The PIR output can be connected to any digital pin of our Arduino board, the pin value will be set to "1" is the sensor detects any movement.
+
+This is how a PIR sensor looks like upside down.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/pir-upside-down.png}
+    \caption{Upside down view of PIR motion sensor}
+    \label{fig:pir-upsidedown}
+\end{figure}
+
+In this image, obtained from the Theory Circuit\cite{theory-circuit} blog, we can spot some parts of the sensor that are worth mentioning:
+
+\begin{itemize}
+	\item Time Delay Adjust. How long the output remains set to "1" after detecting motion.
+	\item Sensitivity Adjust. Sets the detection range.
+	\item Single Trigger Mode / Non-repeat Mode(L). Changes state every time a motion is detected. If we tried it in a practical example, we would see that the LED does not stay on when moving in front of the sensor, but turns on and off every second approximately. This is also called "non-retriggering". 
+	\item Repeat Trigger Mode(H). For this position the sensor will turn on every time motion is derected and turn off a bit after the last motion. The way this works is by reseting the timer every single time a motion is detected. This is also called "retriggering". This mode is preferable for most applications, and it is the one we will be using in this project.
+\end{itemize}
+
 \subsubsection{Using the sensor}
+Now that we have talked a bit about the behaviour of this PIR sensor, let's see how it can be implemented with a really simple example. In order to do so, let's start by taking a look at the circuit.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/pir-scheme-circuit.png}
+    \caption{Upside down view of PIR motion sensor}
+    \label{fig:pir-scheme-circuit}
+\end{figure}
+
+In the circuit we have used a LED that will turn on when movement is detected. As it was mentioned before, the PIR is set to retriggering (H mode).
+
+The output of the PIR sensor goes to pin 2 and then the pin 13 is connected to the LED. As it can be easily guessed, the LED pin will be set to OUTPUT mode and PIR pin to INPUT.
+
+Here's a few lines of code for the circuit below.
 
 \lstinputlisting{arduino/pir.ino}
 
