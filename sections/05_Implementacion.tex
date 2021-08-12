@@ -183,7 +183,11 @@ This ultrasonic distance sensor provides precise, non-contact distance measureme
 
 In the previous section, we have seen a PIR sensor. It is interesting to see which are the main differences between these two components that may seem similar but they definitely are not.
 
-	The main difference is the way in which they work: ultrasonic sensors use echolocation\cite{echolocation}, roughly that is the ability to find out the current location using reflected sound, 
+	The main difference is the way in which they work: ultrasonic sensors use echolocation\cite{echolocation}, roughly that is the ability to find out the current location using reflected sound, whereas PIR sensors use infrared rays to decide whether there is anyone present.
+
+	Using one or another depends on the needs of the user. If only interested in knowing if there is someone or not, PIR sensor is possibly a better choice. However, if knowing the distance to the object is needed, then we need to use an ultrasonic sensor.
+
+	Notice as well that PIR sensors do not detect intert bodies, that is definitely something to take into account if we are not only interested in detecting humans or animals.
 
 Further, more detailed specifications can be found in the datasheet\cite{ultrasonic-datasheet}
 		
