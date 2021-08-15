@@ -101,7 +101,7 @@ We will make this code a bit more especific in the implementation, but in this s
 
 This pretty much sums up the code of the FC-28 sensor as well as the main structure of an Arduino program.
 
-\subsubsection{Examples, let's see two cases scenarios for this code.}
+\subsubsection{Example: two cases scenarios for this code.}
 
 inventarse un rollo del potos noseke
 
@@ -145,6 +145,17 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 
 
 \lstinputlisting{arduino/ldr.ino}
+
+In lines 2, 3 and 4 we will initialise the variables we are going to be using for this program.
+\begin{itemize}
+	\item sensorPin A0 is the input pin that will gather information from the LDR
+	\item sensorValue will store the value whatever sensorPin has found coming from the sensor
+	\item ledPin will be the output pin connected to the LED
+\end{itemize}
+
+In the setup() the ledPin mode will be set as output pin 2.
+
+It gets a bit more interesting in the loop() function. As we did for FC-28, here we are also using analogRead to get the value from sensorPin, for the same reasons that we did in FC-28 too. Then we print the value coming from the sensor as this information might be useful for the user.
 
 \begin{figure}[H]
     \centering
