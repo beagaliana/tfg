@@ -68,9 +68,47 @@ Now let's take a look at the script that is going to make the sensor work
 
 \lstinputlisting{arduino/fc28.ino}
 
-\subsubsection{Testing}
+Since this is the first piece of code introduced in this project, we will use this FC-28 sensor code to explain just a bit of how code is structured in Arduino and why it has to be this way. For the rest of the sensors, the code is more less similar so the explanation of the code will be more straight-forward.
 
-(Aquí iria un checklist y unas capturas de pantalla del output)
+Before we step in, it catchs our eye that there are two well distingued functions: void setup() and void loop(). There two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
+
+(error x faltar una funcion mandatory)
+
+There is actually a really simple reason why. In a tipical C/C++ program, a main function is needed. That is the function that will be called first and at the same time, the function where the rest of functions will be called.
+
+In Arduino there is no main, so instead, we have these two. Now another question might be crossing our minds, which is the purpose of each function?
+
+\begin{itemize}
+	\item \textbf{setup().} The code inside this function will be execute exactly once at the very beginning of the execution. Some examples of instructions that typically go inside setup() are pinMode, Serial.begin, initialisation of libraries that might be included, etc.
+	\item \textbf{loop().} This is the main function of the program, all the code written here will be executed again and again as long as the Arduino board is enabled, of course that is why is the loop function. It goes from the very first line until the last one secuentially, skipping inmediately to the line 1 again. It'll go like this forever as long as the board is provided with electrical supply.
+\end{itemize}
+
+Enough of Arduino syntax, let's jump in the FC-28 code. In line 1 we are defining the Arduino pin that will read the data gathered from the sensor, for this particular case we have decided the pin will be A0.
+
+We jump now inside of setup() and we find Serial.begin(9600);. If the reader has had the chance to read some Arduino scripts, that line will surely ring a bell, but why do we need to use if? What happens if you change 9600 to another value? What does 9600 even mean?
+
+Serial.begin() establishes a serial communication between our Arduino board and another device, in this case the other device is my laptop via USB cable. Once that communication has been established the devices can exchange information using a serial protocol.
+
+This explains as well why this instruction is written in setup() function: we know that will only be executed once and we will only need to establish serial communication once.
+
+In regards to the number 9600, we are talking here about the \textbf{baud rate}. This is the data rate in bits per second for serial data transmission \cite{baud}. The default value for Arduino is 9600.
+
+Let's go now to line 8, already inside of the infinite loop. We see a variable is declared there, humidity, it is reading from the sensorPin we've defined before. The reason why we are using analogRead instead of digital is because digital values are only 1 or 0. So if we were to use digitalRead(), it will just return the rounded the analog value. It is more suitable for gathering sensor data to use analogRead().
+
+Good. So now we have a variable humidity that stores the analog value from the FC-28 sensor. Let's print it. As it was mentioned before, FC-28 value range goes from  to 1023, so 500 sounds like a reasonable mid point. As a first approach, we will set 500 as the breakpoint for determining whether it is very wet or very dry with a simple conditional.
+
+We will make this code a bit more especific in the implementation, but in this section we are mainly interested in understanding the sensor behaviour.
+
+This pretty much sums up the code of the FC-28 sensor as well as the main structure of an Arduino program.
+
+\subsubsection{Examples, let's see two cases scenarios for this code.}
+
+inventarse un rollo del potos noseke
+
+(caso 1 mojao fotos y output)
+
+(caso 2 seco fotos y output)
+
 
 \subsection{Temperature sensor}
 The DHT11 sensor\cite{dht11-manual} allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box. In this section we will see how to measure temperature, in the following section we will focus in measuring humidity.
