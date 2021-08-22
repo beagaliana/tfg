@@ -258,10 +258,57 @@ By this point we have a general view of how sensors work and how to test some of
 \subsection{Introduction}
 In this chapter we will walk through the installation and set up of a farmOS system in an Ubuntu Server hosted in a Raspberry Pi.
 
-
 \subsection{Raspberry Pi configuration}
 For our particular case we will be using a Raspberry Pi 4 Model B computer with 2GB RAM. The operating system that will be used is Ubuntu Server 20.
 \section{Drupal and farmOS installation}
+
+Testing different environments is objectively tricky. We sometimes do not know the whole configuration, we might encounter problems in some environments that are not appearing in others, etc. That is to say we sometimes do not know how our program is going to behave because of the features of the environment that it is being run in. This is something far from desirable.
+
+This is where Docker plays a role. It allows our program, or in this particular case farmOS, to run isolated from the rest of your machine. It will run in its very own Docker container with everything is needs to correctly be executed to ensure it works seamlessly in any environment. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/docker_logo.png}
+        \caption{Docker}
+    \label{fig:docker-logo}
+\end{figure}
+
+Docker has a tremendous documentation but we will not be extending any more on this topic, as it is out of the project scope. However, we will elaborate just a bit on docker-compose. As it is the tool we are going to be using to install farmOS.
+
+This is the definition that can be found in the docker docs.
+
+\say{Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.}
+
+In the same documentation we can also find a well-defined, three-step process to use Compose:
+\begin{itemize}
+	\item Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
+	\item Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
+	\item Run docker compose up and the Docker compose command starts and runs your entire app. You can alternatively run docker-compose up using the docker-compose binary.
+\end{itemize}
+
+There are some examples as well and a ton of references to useful links, but in simpler words, docker-compose will serve us as a way of managing several containers at once by defining them all in a configuration file. As the reader might have guessed at this point, this is not entirely necesary for us to install and run farmOS, but it is the way the maintainers of the project advise to do it and it also give us scalability that might come in handy in a future.
+
+Since we are speaking about containers, let's just mention Podman before closing this topic. We are not actually going to be using it as farmOS developers use Docker and we want to have our farmOS up and running as soon as possible. However, PODMAN deserves a mention as an alternative to Docker.
+
+The only way of implementing containers is not Docker, there is a whole world beyond. Podman is an open-source tool developed by RedHat. As an advantage, Podman does not use a daemon to manage containers, unlike Docker, which could mean more reliability as it does not depend on a single point. For example, in Docker, if there was a problem with the daemon, we cannot run or manage containers.
+
+Another great pro is that Podman uses exactly the same commands than Docker. Engineers developing the tool did not want to make it confusing so they just used the very same commands. Which means that you could even create an alias docker=podman and start using Podman as if you were using Docker. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/podman_logo.png}
+        \caption{Podman}
+    \label{fig:podman-logo}
+\end{figure}
+
+
+Long story short, Podman is, in general terms, more secure than Dockers and offers a few advantages to be taken into account. Again, we are not going to be using it but we considered it was something worthy to be mentioned in this section.
+
+\subsubsection{Getting our hands dirty: farmOS installation}
+Without further ado, let's get to it. First step is to go to the documentation of farmOS. The installation is described as a tutorial so we will not spend much time on doing this. Let's follow the tutorial and see if we success. 
+
+This is the \href{https://farmos.org/hosting/docker/}{link}.
+
 
 
 \section{Arduino and server communication}
