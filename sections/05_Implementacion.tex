@@ -12,7 +12,7 @@ There are infinitely many ways of implementing sensors in a computer system. Int
 
 
 
-\section{Specifications}
+\section{Sensors' implementation}
 Let's take a look at some of the options that the different sensors offer. In this section we will specify some sensors in order to understand what these components are capable of, then, we will implement the two of them that are considered to be more crucial in harvesting, since those are the ones that we are interested in for this prototype. 
 
 We know we will be working with an Arduino MEGA 2560 board, but it goes without saying, we will also need some more components. 
@@ -70,6 +70,9 @@ Now let's take a look at the script that is going to make the sensor work
 
 Since this is the first piece of code introduced in this project, we will use this FC-28 sensor code to explain just a bit of how code is structured in Arduino and why it has to be this way. For the rest of the sensors, the code is more less similar so the explanation of the code will be more straight-forward.
 
+\vspace{7mm}
+\textbf{Introduction to Arduino program structure}
+
 Before we step in, it catchs our eye that there are two well distingued functions: void setup() and void loop(). There two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
 
 (error x faltar una funcion mandatory)
@@ -82,6 +85,10 @@ In Arduino there is no main, so instead, we have these two. Now another question
 	\item \textbf{setup().} The code inside this function will be execute exactly once at the very beginning of the execution. Some examples of instructions that typically go inside setup() are pinMode, Serial.begin, initialisation of libraries that might be included, etc.
 	\item \textbf{loop().} This is the main function of the program, all the code written here will be executed again and again as long as the Arduino board is enabled, of course that is why is the loop function. It goes from the very first line until the last one secuentially, skipping inmediately to the line 1 again. It'll go like this forever as long as the board is provided with electrical supply.
 \end{itemize}
+
+\newpage
+
+\textbf{FC-28 code explanation}
 
 Enough of Arduino syntax, let's jump in the FC-28 code. In line 1 we are defining the Arduino pin that will read the data gathered from the sensor, for this particular case we have decided the pin will be A0.
 
@@ -103,12 +110,44 @@ This pretty much sums up the code of the FC-28 sensor as well as the main struct
 
 \subsubsection{Example: two cases scenarios for this code.}
 
-inventarse un rollo del potos noseke
+After understanding a bit how the FC-28 sensor works. Let's see a real life practical example of how this actually works.
 
-(caso 1 mojao fotos y output)
+\textbf{First case scenario: a really dry Erica} \\
+For our particular example we have this beautiful Erica plant. It is planted in a simple plastic pot, and at this precise moment it is absolutely dry.
 
-(caso 2 seco fotos y output)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{fig/erica.jpg}
+    \caption{Erica with FC-28 sensor}
+    \label{fig:erica}
+\end{figure}
 
+
+Installing the hygrometer sensor is trivial, we just need to insert in the soil carefully so the roots of the plant will not get damaged. Now let's start our Arduino program and see what output is printing.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/seco.png}
+    \caption{Arduino output for dry soil}
+    \label{fig:dry-soil}
+\end{figure}
+
+It is indicating the soil is very dry, as it was to be expected.
+
+\textbf{Second case scenario: watered Erica} \\
+Without changing the FC-28 sensor or stopping our current Arduino process, let's water Erica and see how the output changes.
+
+WATERED ERICA
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/humedo.png}
+    \caption{Arduino output for humid soil}
+    \label{fig:humid-soil}
+\end{figure}
+
+
+As it can be observed, this is quite a simple procedure to check the sensor is behaving as it should, but it is definitely more than enough to server our purpose.
 
 \subsection{Temperature sensor}
 The DHT11 sensor\cite{dht11-manual} allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box. In this section we will see how to measure temperature, in the following section we will focus in measuring humidity.
@@ -122,7 +161,6 @@ The DHT11 sensor\cite{dht11-manual} allows us to measure both temperature and hu
 
 There are many applications for this sensor, it can be implemented as dehumidifier, for automatic control, data loggers or even weather stations. 
 
-\subsection{Humidity sensor}
 
 \subsection{LDR Sensor}
 LDR (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
@@ -136,6 +174,8 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
 
 \subsubsection{Using the sensor}
 
+This is a general view of how the LDR sensor looks connected to the Arduino board in a real life scenario.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{fig/ldr-circuit.jpg}
@@ -143,8 +183,10 @@ LDR (which stands for Light Dependent Resistor) sensor is a device used to detec
     \label{fig:ldr}
 \end{figure}
 
-
+Here's a piece of code that will start the sensor and get it to work.
 \lstinputlisting{arduino/ldr.ino}
+
+\textbf{LDR code explanation}
 
 In lines 2, 3 and 4 we will initialise the variables we are going to be using for this program.
 \begin{itemize}
@@ -157,6 +199,7 @@ In the setup() the ledPin mode will be set as output pin 2.
 
 It gets a bit more interesting in the loop() function. As we did for FC-28, here we are also using analogRead to get the value from sensorPin, for the same reasons that we did in FC-28 too. Then we print the value coming from the sensor as this information might be useful for the user.
 
+In line 14, there is a simple if conditional. A
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{fig/ldr-scheme-circuit.png}
@@ -220,6 +263,22 @@ Here's a few lines of code for the circuit below.
 
 \lstinputlisting{arduino/pir.ino}
 
+\vspace{5mm}
+\textbf{PIR code explanation}
+
+This structure is pretty much the same as what we have seen in the previous code explanations. There is, however, something interesting in line 12 and 16. We have some HIGH and LOW values.
+
+We have not used this values before, le0x1t's use them now. We can take a look at \verb|hardware/arduino/cores/arduino/Arduino.h| file. If we go to lines 18 and 19 of this file we can find the following:
+\begin{verbatim}
+    18 #define HIGH 0x1
+    19 #define LOW  0x0
+\end{verbatim}
+We can see this are values defined in hexadecimal, if we convert this to decimal, we have 1 and 0 respectively.
+
+Back to the code. If we get a 1 in pirStat then we will get a message saying `Hey! I got you' and it will turn the led on thanks to digitalWrite.
+
+In any other case, we have no movement so the led will be turned off.
+
 \subsection{Ultrasonic sensor}
 This ultrasonic distance sensor provides precise, non-contact distance measurements. It works in the same way as bats do: they emit quick and high-frequency sounds pulses, if they hit an object then then the signal comes back to the sensor.
 
@@ -250,8 +309,11 @@ Further, more detailed specifications can be found in the datasheet\cite{ultraso
 
 \lstinputlisting{arduino/ultrasonic.ino}
 
-\section{Implementation}
-By this point we have a general view of how sensors work and how to test some of its basic features. As it was mentioned before, from this point on we will focus on implementing moisture and FC-28 sensors. In this section we will take a look at a similar code that suits better the specific needs of this prototype. Later on we will talk about how to send the information collected in this sensors to our farmOS system.
+\textbf{Ultrasonic sensor code explanation}
+
+We are starting this code by defining a variable what will count centimeters, these is of course the distance from the object (or obstacle) being measured to the ultrasonic sensor.
+
+
 
 \section{Raspberry Pi server hosting}
 
@@ -260,6 +322,10 @@ In this chapter we will walk through the installation and set up of a farmOS sys
 
 \subsection{Raspberry Pi configuration}
 For our particular case we will be using a Raspberry Pi 4 Model B computer with 2GB RAM. The operating system that will be used is Ubuntu Server 20.
+
+The installation is trivial thanks to the Raspberry Pi Imager, an imaging utility provided by Raspberry in March last year. \href{https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview}{This} is the tutorial provided by Ubuntu on how to install Ubuntu server in Raspberry Pi using the Raspberry Imager.
+
+After following the tutorial and configuring our Internet connection, we have the Raspberry with Ubuntu server up and running. Since we are using a Spanish keyboard layout, we will also change the main layout
 \section{Drupal and farmOS installation}
 
 Testing different environments is objectively tricky. We sometimes do not know the whole configuration, we might encounter problems in some environments that are not appearing in others, etc. That is to say we sometimes do not know how our program is going to behave because of the features of the environment that it is being run in. This is something far from desirable.
