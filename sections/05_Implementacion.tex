@@ -378,8 +378,69 @@ This is the \href{https://farmos.org/hosting/docker/}{link}.
 
 
 \section{Arduino and server communication}
+Let's jump in into a really interesting section. How can we establish a communication between our Arduino board, that is collecting sensor data, and the server we just built?
+
+Well, luckily for us, there is quite an useful module called Arduino Ethernet Shield that will connect our board to the Internet in no time.
 
 \subsection{Ethernet shield}
+This device that you can see in the picture below connects to the internet using a RJ45 cable, which is basically the regular Ethernet cable we are totally used to seeing pretty much everywhere.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/ethernet.jpg}
+    \caption{Arduino Ethernet Shield}
+    \label{fig:ethernet}
+\end{figure}
+
+\subsubsection{Connecting to the Internet}
+Let's start by the beginning, we need to be able to connect to the Internet. This will assure as well that our Arduino is working properly, as well as the Ethernet shield.
+
+The first step is to assemble the Arduino and the Ethernet shield together. We need to make sure that the two ICSPs (In Circuit Serial Programming) are connected. See a picture of the prototype for this project below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/ethernet-connected.jpg}
+    \caption{Ethernet Shield connected to Arduino MEGA 2560}
+    \label{fig:ethernet-connected}
+\end{figure}
+
+\vspace{7mm}
+
+\textbf{Getting an IP address}
+
+There is a very convenient tool in Arduino IDE that has some example scripts, these are really useful to test simple features without spending too much time.
+
+The example script we are interested in for this particular scenario is the DhcpAddressPrinter sketch. It can be found in \verb|File > Examples > Ethernet > DhcpAddressPrinter| and it looks like this.
+
+\vspace{5mm}
+
+\lstinputlisting{arduino/DhcpAddressPrinter.ino}
+
+\vspace{7mm}
+
+After connecting our Ethernet shield to the RJ45 cable and obviously, the board to the power supply, we will execute this script and see what we get. Here we go.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/assign-ip.png}
+    \caption{View of Arduino IDE}
+    \label{fig:assign-ip}
+\end{figure}
+
+That is a general view of the Arduino IDE executing the \verb|DhcpAddressPrinter.ino| script. Let's take a closer look to the serial monitor, so we can actually read the IP that has been assigned to the device in this moment.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/serial-monitor-ip.png}
+    \caption{View of the serial monitor}
+    \label{fig:serial-monitor-ip}
+\end{figure}
+
+There it is. The current IP address is \verb|192.168.8.118|.
+
+The next step is to write a script so that we can send information, that is make our Arduino device a client and establish a cliente-server communication between the Arduino board and the server hosted on the Raspberry.
+
+
 
 \section{Conclusions}
 
