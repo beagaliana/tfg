@@ -375,6 +375,39 @@ Without further ado, let's get to it. First step is to go to the documentation o
 
 This is the \href{https://farmos.org/hosting/docker/}{link}.
 
+Since the tutorial is pretty well defined. We will do a bit of a sum up here in order to understand what's going on during a farmOS installation using Docker.
+
+We already know a bit about Docker and how it works so the first and more obvious step to take is to go to the Docker hub. We can see how to pull the \href{https://hub.docker.com/r/farmos/farmos}{farmOS image} and take a look at the documentation written there.
+
+Let's pull the image by running \verb|docker pull farmos/farmos|.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/pull-docker.png}
+    \caption{Docker daemon downloading the farmOS image from dockerhub}
+    \label{fig:pull-docker}
+\end{figure}
+
+That's done. If you are following my steps you should have something similar to:
+\verb|Status: Downloaded newer image for farmos/farmos:latest|
+
+\verb|docker.io/farmos/farmos:latest|
+
+Now let's check the images to make sure farmOS is among them by running \verb|docker images|. Although actually... If like me, you have tons of images downloaded, you can run \verb|docker images | grep "farmos"|.
+
+Next step is to run the container. Let's execute docker run -itd farmos/farmos /bin/bash. and we'll get a container id, which can be useful to identify the container. This is ours: 0541bc7d2dcfe16553ef0364b26239f3d9e7eceacc28dd7c3a99381a65d068ad
+
+Okay, let's list the containers and check if farmOS container is there.
+
+bea@warmachine:~/Documents/tfg$ docker container ls
+CONTAINER ID   IMAGE                               COMMAND                  CREATED              STATUS                PORTS     NAMES
+0541bc7d2dcf   farmos/farmos                       "docker-entrypoint.s…"   About a minute ago   Up About a minute     80/tcp    affectionate_shannon
+58f9af3bc507   drud/ddev-ssh-agent:v1.17.0-built   "/entry.sh ssh-agent"    4 days ago           Up 4 days (healthy)             ddev-ssh-agent
+
+Well. Indeed it is.
+
+
+
+
 
 
 \section{Arduino and server communication}
