@@ -392,48 +392,50 @@ These are the steps I followed to install my farmOS.
 
 \textbf{Troubleshooting.} Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
 
+Now we can open our favourite browser and access localhost.
+
+This is a generic Drupal installation screen. Let's jump into the next screen and continue with the installation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/farmos-drupal-install.png}
+    \caption{Main Drupal installation screen}
+    \label{fig:farmos-drupal-install}
+\end{figure}
+
+We need to be careful when configuring the database. If the data introduced is not correct, we will be gettings errors and the installer won't let us continue with the installation process.
+The data that needs to be introduced in the database is the one appearing in the docker-compose.yml file. Also here's a link with some more information about \href{https://farmos.org/development/docker/}{developing farmOS with docker}, it might come in handy during the completition of the procedure.
+
+Here's the database configuration screen with a typical error that might be displayed if the data introduced is not correct.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/db-config-drupal.png}
+    \caption{Main Drupal installation screen}
+    \label{fig:db-config-drupal}
+\end{figure}
+
+Checking our docker-compose.yml we know that our database name/username/password is farm and the database host is db. Also, we are using port 3306.
+
+There is some info related to this in the link referenced above, see a picture below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/db-setup-tutorial.png}
+    \caption{Main Drupal installation screen}
+    \label{fig:db-setup-tutorial}
+\end{figure}
+
+After correctly configuring the database, there is a list of the modules that can be installed by default with the farmOS installation. We will leave the ones that are already selected and also add the ones related to sensors, as we are going to be using them for sure.
+
+
+However, these modules can be installed later on, using drush. We will see how to do this a bit further down, because it is tremendously useful when managing Drupal sites from the developer's point of view, as it is our particular case.
+
+
 Now we can open our favourite browser and access localhost. There it is, a nice farmOS instance up and running.
 
 foto farmos
 
-This is a generic Drupal installation screen. Let's install it.
-
-We need to be careful when configuring the database. If the data introduced is not correct, we will be gettings errors and the installer won't let us continue with the installation process.
-The data that needs to be introduced in the database is the one appearing in the docker-compose.yml file. Also here's a link with some more information about \href{https://farmos.org/development/docker/}{developing farmOS with docker}, it might come in handy during the completition of the procedure.
- + fotos d la instalación
-
-
-
-Let's pull the image by running \verb|docker pull farmos/farmos|.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{fig/pull-docker.png}
-    \caption{Docker daemon downloading the farmOS image from dockerhub}
-    \label{fig:pull-docker}
-\end{figure}
-
-That's done. If you are following my steps you should have something similar to:
-\verb|Status: Downloaded newer image for farmos/farmos:latest|
-
-
-
 \verb|docker.io/farmos/farmos:latest|
-
-Now let's check the images to make sure farmOS is among them by running \verb|docker images|. Although actually... If like me, you have tons of images downloaded, you can run \verb|docker images | grep "farmos"|.
-
-Next step is to run the container. Let's execute docker run -itd farmos/farmos /bin/bash. and we'll get a container id, which can be useful to identify the container. This is ours: 0541bc7d2dcfe16553ef0364b26239f3d9e7eceacc28dd7c3a99381a65d068ad
-
-Okay, let's list the containers and check if farmOS container is there.
-
-bea@warmachine:~/Documents/tfg$ docker container ls
-CONTAINER ID   IMAGE                               COMMAND                  CREATED              STATUS                PORTS     NAMES
-0541bc7d2dcf   farmos/farmos                       "docker-entrypoint.s…"   About a minute ago   Up About a minute     80/tcp    affectionate_shannon
-58f9af3bc507   drud/ddev-ssh-agent:v1.17.0-built   "/entry.sh ssh-agent"    4 days ago           Up 4 days (healthy)             ddev-ssh-agent
-
-Well. Indeed it is.
-
-
-
 
 
 
