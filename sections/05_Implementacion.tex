@@ -377,7 +377,32 @@ This is the \href{https://farmos.org/hosting/docker/}{link}.
 
 Since the tutorial is pretty well defined. We will do a bit of a sum up here in order to understand what's going on during a farmOS installation using Docker.
 
-We already know a bit about Docker and how it works so the first and more obvious step to take is to go to the Docker hub. We can see how to pull the \href{https://hub.docker.com/r/farmos/farmos}{farmOS image} and take a look at the documentation written there.
+Honestly, there are many ways to install a Drupal site using Docker. You can browse through dockerhub and just pull the \href{https://hub.docker.com/r/farmos/farmos}{farmOS image} and take a look at the documentation written there. Then, we could run the container and the service will be up.
+
+However, for this project, we will be using docker-compose as Drupal requires a database, it is pretty useful to dockerize both services.
+
+These are the steps I followed to install my farmOS.
+\begin{itemize}
+    \item Go to the \href{https://github.com/farmOS/farmOS}{farmOS official repository}.
+    \item Make sure that you are in the correct version. Although there is a version 2 that has just been released, we are interested in version 7.x-1.x. We will talk about version 2 a bit further.
+    \item Clone the repository in your local machine using Git (git clone https://github.com/farmOS/farmOS).
+    \item Go to docker directory and copy the file docker-compose.development.yml to docker-compose.yml. The simplest way to do so is by using the terminal. cp docker-compose.development.yml docker-compose.yml.
+    \item You are all set. Execute docker-compose up.
+\end{itemize}
+
+\textbf{Troubleshooting.} Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
+
+Now we can open our favourite browser and access localhost. There it is, a nice farmOS instance up and running.
+
+foto farmos
+
+This is a generic Drupal installation screen. Let's install it.
+
+We need to be careful when configuring the database. If the data introduced is not correct, we will be gettings errors and the installer won't let us continue with the installation process.
+The data that needs to be introduced in the database is the one appearing in the docker-compose.yml file. Also here's a link with some more information about \href{https://farmos.org/development/docker/}{developing farmOS with docker}, it might come in handy during the completition of the procedure.
+ + fotos d la instalación
+
+
 
 Let's pull the image by running \verb|docker pull farmos/farmos|.
 \begin{figure}[H]
@@ -389,6 +414,8 @@ Let's pull the image by running \verb|docker pull farmos/farmos|.
 
 That's done. If you are following my steps you should have something similar to:
 \verb|Status: Downloaded newer image for farmos/farmos:latest|
+
+
 
 \verb|docker.io/farmos/farmos:latest|
 
