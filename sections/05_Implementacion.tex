@@ -435,7 +435,7 @@ Now we can open our favourite browser and access localhost. There it is, a nice 
 
 foto farmos
 
-\verb|docker.io/farmos/farmos:latest|
+\textbf{How to install and enable a module using Drush}
 
 
 
@@ -502,7 +502,63 @@ There it is. The current IP address is \verb|192.168.8.118|.
 
 The next step is to write a script so that we can send information, that is make our Arduino device a client and establish a cliente-server communication between the Arduino board and the server hosted on the Raspberry.
 
+\subsection{Sending sensor data to farmOS}
+Before continuing with more Arduino scripts let's go back to our farmOS instance. How can we send data?
 
+For our prototype we will implement FC-28 sensor in farmOS. The first thing to be done is to add the sensor to the system. In order to do so, we need to go to the sensor section, which can be done by navigating to Assets>Sensors as it shown in the image below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/drupal-install/select-sensor.png}
+    \caption{Sensor section in farmOS system}
+    \label{fig:select-sensor}
+\end{figure}
+
+This can also be done by accessing the following route in the browser: localhost/farm/assets/sensors
+
+Now let's create a sensor by clicking the button Add sensor. For this project I have created a FC-28 sensor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/created-sensor.png}
+    \caption{FC-28 sensor in farmOS system}
+    \label{fig:created-sensor}
+\end{figure}
+
+The reader might have noticed that the sensor type is listener. The farm sensor listener is a submodule that extends the Sensor asset type by providing integration with external devices. To connect to specific types of sensors, additional modules can be built. For more information in relation to farm sensors, refer to the \href{https://farmos.org/guide/assets/sensors/}{documentation}.
+
+Let's now take a look at the sensor configuration. In the general tab we can find some basic configuration such as the name, description, location and so on.
+
+Let's open the sensor configuration tab and select the sensor type as Listener. As soon as we do so, we will get sensor settings that provide us with a public and private key.
+
+We will also check the allow public API read access checkbox, as it will make the process easier.
+
+The developer information is what we are really interested in as it gives us the information needed to be able to store FC-28 data into farmOS. See the image below.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/developer-info.png}
+    \caption{Developer information for FC-28 sensor}
+    \label{fig:developer-info}
+\end{figure}
+
+There is a particularly interesting example suggested there:
+\begin{verbatim}
+    curl -H "Content-Type: application/json" -X POST -d
+'{ "timestamp": 1633626889, "value": 76.5 }'
+http://localhost/farm/sensor/listener/4840abd4e88034979a0a8ae4ffdcd5f9?private_key=65fcb0fae0b5813cf4449637de11af9a
+\end{verbatim}
+
+That command will introduce the value 76.5 and farmOS will make a graphic to display it for us. Let's give it a shot and execute it.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/drupal-install/sensor-data-graphic.png}
+    \caption{Data collected from FC-28 into farmOS}
+    \label{fig:sensor-data-graphic}
+\end{figure}
+
+That's a small demo of how sensors listener work to help us understand farmOS. Nonetheless, we have added sensor data manually and of course that is not the final goal of this project. Now that we understand the farmOS behaviour, let's see how we can make an HTTP POST request from an Arduino device that can automate this for us.
 
 \section{Conclusions}
 
