@@ -32,6 +32,48 @@ Carlos Gregorio~Martín Pérez.
 \newblock URL
   \url{https://riull.ull.es/xmlui/bitstream/handle/915/6207/Aplicaciones\%20computacionales\%20en\%20la\%20agricultura.pdf?sequence=1&isAllowed=y}.
 
+\bibitem[Ada(2020)]{pir-guide}
+Lady Ada
+\newblock PIR sensor guide, 2020.
+\newblock URL
+  \url{https://cdn-learn.adafruit.com/downloads/pdf/pir-passive-infrared-proximity-motion-sensor.pdf}.
+
+\bibitem[Aosong(2016)]{dht11-manual}
+Aosong Electronics
+\newblock DHT11 Product Manual, 2016.
+\newblock URL
+  \url{http://j5d2v7d7.stackpathcdn.com/wp-content/uploads/2016/04/DHT11.pdf}.
+
+\bibitem[Theory Circuit(2016)]{theory-circuit}
+Theory Circuit
+\newblock Automatic Staircase Light using PIR sensor.
+\newblock URL
+  \url{https://theorycircuit.com/automatic-staircase-light-using-pir-sensor}.
+
+\bibitem[Price(2015)]{echolocation}
+Jo Price
+\newblock What is echolocation and which animals use it?, 2015
+\newblock URL
+  \url{https://www.discoverwildlife.com/animal-facts/what-is-echolocation}.
+
+\bibitem[Parallax(2008)]{ultrasonic-datasheet}
+Parallax
+\newblock Ultrasonic Distance Sensor, 2008
+\newblock URL
+\url{https://www.tme.com/Document/c4c911237af2fc20e7253c2c20dd256e/PARALLAX-PING.pdf}.
+
+\bibitem[Arduino.cc(2020)]{baud}
+Arduino.cc
+\newblock Arduino Reference: Serial.begin(), 2020
+\newblock URL
+\url{https://www.arduino.cc/reference/en/language/functions/communication/serial/begin}.
+
+\bibitem[electronicsnotes]{ldr}
+electronicsnotes
+\newblock Light Dependent Resistor LDR: Photoresistor
+\newblock URL
+\url{https://www.electronics-notes.com/articles/electronic_components/resistors/light-dependent-resistor-ldr.php}.
+
 \bibitem[Stenta(2019)]{end-of-d7}
 Michael Stenta.
 \newblock farmOS 2.x Roadmap, 2019.
