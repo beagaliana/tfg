@@ -5,6 +5,49 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Gollin, Hansen, Wingender (2021)]{greenrevolution3}
+Gollin, D., Hansen, C. W., & Wingender, A. M.
+\newblock Two Blades of Grass: The Impact of the Green Revolution, February 2021.
+\newblock URL
+\url{https://sci-hub.st/10.1086/714444}.
+
+\bibitem[Harwood(2007)]{greenrevolution1}
+Jonathan Harwood.
+\newblock Europe’s Green Revolution: The Rise and Fall of Peasant-Friendly Plant Breeding in Central Europe, 1890–1945, 2009.
+\newblock URL
+  \url{https://www.mpiwg-berlin.mpg.de/research/projects/DeptIII-Harwood_GreenRevolution}.
+
+\bibitem[Harwood(2009)]{greenrevolution2}
+Jonathan Harwood.
+\newblock Why have Green Revolutions so often failed to help peasant-farmers?, October 2009.
+\newblock URL
+  \url{https://agrarianstudies.macmillan.yale.edu/sites/default/files/files/colloqpapers/05harwood.pdf}.
+
+\bibitem[Stevenson, Villoria, Byerlee, Kelley, Marediad (2013)]{greenrevolution4}
+James R. Stevenson, Nelson Villoria, Derek Byerlee, Timothy Kelley, Mywish Marediad
+\newblock Green Revolution research saved an estimated 18 to 27 million hectares from being brought into agricultural production, May 2013.
+\newblock URL
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3666715/}.
+
+\bibitem[Pingali(2012)]{greenrevolution5}
+Prabhu L. Pingali
+\newblock Green Revolution: Impacts, limits, and the path ahead, July 2012.
+\newblock URL
+\url{https://www.pnas.org/content/109/31/12302}.
+
+
+\bibitem[farmOS(2021)]{farmosrepo}
+farmOS
+\newblock farmOS repository
+\newblock URL
+\url{https://github.com/farmOS/farmOS}.
+
+\bibitem[farmOS()]{farmosguide}
+farmOS
+\newblock farmOS User guide
+\newblock URL
+\url{https://farmos.org/guide/}.
+
 \bibitem[Agrineer(2018)]{agrineer}
 Agrineer.
 \newblock Agrineer.org wiki:about, 2018.
@@ -20,6 +63,22 @@ Arduino.
 John Deere.
 \newblock Future of farming, 2021.
 \newblock URL \url{https://www.deere.co.uk/en/agriculture/future-of-farming/}.
+
+\bibitem[fsf(2021)]{fsf-faq-license}
+Free Software Foundation.
+\newblock Frequently Asked Questions about the GNU Licenses, 2021.
+\newblock URL \url{https://www.gnu.org/licenses/gpl-faq.html}.
+
+\bibitem[farmOScomm()]{farmos-community}
+farmOS.
+\newblock Community forum.
+\newblock URL \url{https://farmos.discourse.group/}.
+
+\bibitem[fieldkit()]{farmos-fieldkit}
+farmOS.
+\newblock Field Kit.
+\newblock URL \url{https://farmos.org/guide/app/}.
+
 
 \bibitem[Labs(2017)]{growbox}
 Red~Sheep Labs.
@@ -86,35 +145,8 @@ Michael Stenta.
 \newblock URL
   \url{https://farmos.discourse.group/t/farmos-2-x-releases-and-what-to-expect/736}.
 
-\bibitem[Harwood(2007)]{greenrevolution1}
-Jonathan Harwood.
-\newblock Europe’s Green Revolution: The Rise and Fall of Peasant-Friendly Plant Breeding in Central Europe, 1890–1945, 2009.
-\newblock URL
-  \url{https://www.mpiwg-berlin.mpg.de/research/projects/DeptIII-Harwood_GreenRevolution}.
 
-\bibitem[Harwood(2009)]{greenrevolution2}
-Jonathan Harwood.
-\newblock Why have Green Revolutions so often failed to help peasant-farmers?, October 2009.
-\newblock URL
-  \url{https://agrarianstudies.macmillan.yale.edu/sites/default/files/files/colloqpapers/05harwood.pdf}.
 
-\bibitem[Gollin, Hansen, Wingender (2021)]{greenrevolution3}
-Gollin, D., Hansen, C. W., & Wingender, A. M.
-\newblock Two Blades of Grass: The Impact of the Green Revolution, February 2021.
-\newblock URL
-\url{https://sci-hub.st/10.1086/714444}.
-
-\bibitem[Stevenson, Villoria, Byerlee, Kelley, Marediad (2013)]{greenrevolution4}
-James R. Stevenson, Nelson Villoria, Derek Byerlee, Timothy Kelley, Mywish Marediad
-\newblock Green Revolution research saved an estimated 18 to 27 million hectares from being brought into agricultural production, May 2013.
-\newblock URL
-\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3666715/}.
-
-\bibitem[Pingali(2012)]{greenrevolution5}
-Prabhu L. Pingali
-\newblock Green Revolution: Impacts, limits, and the path ahead, July 2012.
-\newblock URL
-\url{https://www.pnas.org/content/109/31/12302}.
 
 
 \end{thebibliography}
