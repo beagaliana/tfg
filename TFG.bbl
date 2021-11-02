@@ -79,6 +79,20 @@ farmOS.
 \newblock Field Kit.
 \newblock URL \url{https://farmos.org/guide/app/}.
 
+\bibitem[sensors()]{farmos-sensors}
+farmOS.
+\newblock Sensors.
+\newblock URL \url{https://farmos.org/guide/assets/sensors/#sensors}.
+
+\bibitem[atmega()]{atmega}
+RobotShops.
+\newblock Arduino Mega 2560 Datasheet.
+\newblock URL \url{https://www.robotshop.com/media/files/pdf/arduinomega2560datasheet.pdf}.
+
+\bibitem[lm293datasheet()]{lm293datasheet}
+Texas Instruments.
+\newblock LMx93 Datasheet.
+\newblock URL \url{https://www.ti.com/lit/ds/symlink/lm393-n.pdf}.
 
 \bibitem[Labs(2017)]{growbox}
 Red~Sheep Labs.

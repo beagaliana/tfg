@@ -1,7 +1,7 @@
 \chapter{Arduino sensor specification and implementation}\label{cap:implementacion}
 
 \section{Introduction}
-There are infinitely many ways of implementing sensors in a computer system. Internet of things is slowly becoming a topic that people interested in technology are talking about. For our particular case, we will be using an Arduino MEGA 2560 board.
+There are infinitely many ways of implementing sensors in a computer system. Internet of things is slowly becoming a topic that people interested in technology are talking about. For our particular case, we will be using an Arduino MEGA 2560 board\cite{atmega}.
 
 \begin{figure}[H]
     \centering
@@ -30,7 +30,7 @@ This FC-28 hygrometer module consists of two probes that measure the volumetric 
     \label{fig:fc28}
 \end{figure}
 
-Besides the sensor itself, there is another component that has two LEDs (one for output and another for power), a potentiometer and a LM293 comparator.
+Besides the sensor itself, there is another component that has two LEDs (one for output and another for power), a potentiometer and a LM293\cite{lm293datasheet} comparator.
 
 \subsubsection{Using the sensor}
 The values that the sensor picks up goes from 0 to 1023. Ideally it would show 0 when sunken underwater and 1023 when is only in contact with the air, in other words, when it's not in contact with soil.
@@ -385,12 +385,16 @@ These are the steps I followed to install my farmOS.
 \begin{itemize}
     \item Go to the \href{https://github.com/farmOS/farmOS}{farmOS official repository}.
     \item Make sure that you are in the correct version. Although there is a version 2 that has just been released, we are interested in version 7.x-1.x. We will talk about version 2 a bit further.
-    \item Clone the repository in your local machine using Git (git clone https://github.com/farmOS/farmOS).
+    \item Clone the repository in your local machine using Git (\verb|git clone https://github.com/farmOS/farmOS|).
     \item Go to docker directory and copy the file docker-compose.development.yml to docker-compose.yml. The simplest way to do so is by using the terminal. cp docker-compose.development.yml docker-compose.yml.
-    \item You are all set. Execute docker-compose up.
 \end{itemize}
 
-\textbf{Troubleshooting.} Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
+You are all set. Execute docker-compose up.
+
+
+\textbf{Troubleshooting.}
+
+Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
 
 Now we can open our favourite browser and access localhost.
 
@@ -571,11 +575,9 @@ The developer information is what we are really interested in as it gives us the
 \end{figure}
 
 There is a particularly interesting example suggested there:
-\begin{verbatim}
-    curl -H "Content-Type: application/json" -X POST -d
-'{ "timestamp": 1633626889, "value": 76.5 }'
-http://localhost/farm/sensor/listener/4840abd4e88034979a0a8ae4ffdcd5f9?private_key=65fcb0fae0b5813cf4449637de11af9a
-\end{verbatim}
+\begin{lstlisting}[language=bash]
+    curl -H "Content-Type: application/json" -X POST -d '{ "timestamp": 1633626889, "value": 76.5 }' http://localhost/farm/sensor/listener/4840abd4e88034979a0a8ae4ffdcd5f9?private_key=65fcb0fae0b5813cf4449637de11af9a
+\end{lstlisting}
 
 That command will introduce the value 76.5 and farmOS will make a graphic to display it for us. Let's give it a shot and execute it.
 
