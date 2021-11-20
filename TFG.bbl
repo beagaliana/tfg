@@ -89,6 +89,16 @@ RobotShops.
 \newblock Arduino Mega 2560 Datasheet.
 \newblock URL \url{https://www.robotshop.com/media/files/pdf/arduinomega2560datasheet.pdf}.
 
+\bibitem[fc28()]{fc28}
+Mechatrofice.
+\newblock Automatic Watering System using FC-28 Moisture Sensor with arduino.
+\newblock URL \url{https://mechatrofice.com/arduino/automatic-irrigation-system}.
+
+\bibitem[ldr()]{ldr}
+EEPower.
+\newblock Photoresistor
+\newblock URL \url{https://eepower.com/resistor-guide/resistor-types/photo-resistor/#}.
+
 \bibitem[lm293datasheet()]{lm293datasheet}
 Texas Instruments.
 \newblock LMx93 Datasheet.
@@ -146,6 +156,12 @@ electronicsnotes
 \newblock Light Dependent Resistor LDR: Photoresistor
 \newblock URL
 \url{https://www.electronics-notes.com/articles/electronic_components/resistors/light-dependent-resistor-ldr.php}.
+
+\bibitem[diy(2011)]{diy}
+Marco Wolf, Shaun McQuitty
+\newblock Understanding the do-it-yourself consumer: DIY motivations and outcomes, December 2011
+\newblock URL
+\url{https://www.researchgate.net/publication/257797548_Understanding_the_do-it-yourself_consumer_DIY_motivations_and_outcomes}.
 
 \bibitem[Stenta(2019)]{end-of-d7}
 Michael Stenta.

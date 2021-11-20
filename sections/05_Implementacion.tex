@@ -18,7 +18,7 @@ Let's take a look at some of the options that the different sensors offer. In th
 We know we will be working with an Arduino MEGA 2560 board, but it goes without saying, we will also need some more components. 
 
 \subsection{FC-28 Soil Moisture Sensor}
-Soil moisture sensor is likely the main sensor when harvesting is concerned as it helps farmers manage their irrigation systems more efficiently. This won't only save water but will also increase the quality of the crops since it can control moisture to the milimeter at all diferent plant growth stages. In this section, we are going to be documenting the process of using the sensor FC-28 with our Arduino board.
+Soil moisture sensor\cite{fc28} is likely the main sensor when harvesting is concerned as it helps farmers manage their irrigation systems more efficiently. This won't only save water but will also increase the quality of the crops since it can control moisture to the milimeter at all diferent plant growth stages. In this section, we are going to be documenting the process of using the sensor FC-28 with our Arduino board.
 
 \subsubsection{How does it work?}
 This FC-28 hygrometer module consists of two probes that measure the volumetric content of water. The current passes through the soil, which gives the resistance value between the metallic probes and measures the moisture value. The reason why this works fine is simple: the more water a soil has, the more electricity will be conducted which means less resistance.
@@ -163,7 +163,7 @@ There are many applications for this sensor, it can be implemented as dehumidifi
 
 
 \subsection{LDR Sensor}
-LDR (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
+LDR\cite{ldr} (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
 
 \begin{figure}[htp]
     \centering
@@ -591,5 +591,13 @@ That command will introduce the value 76.5 and farmOS will make a graphic to dis
 That's a small demo of how sensors listener work to help us understand farmOS. Nonetheless, we have added sensor data manually and of course that is not the final goal of this project. Now that we understand the farmOS behaviour, let's see how we can make an HTTP POST request from an Arduino device that can automate this for us.
 
 \section{Conclusions}
+A lot of new topics have been covered in this section. Let us draw a few conclusions out of them.
 
+It is worth mentioning how easy it is to implement simple, and yet powerful, sensors using Arduino. Of course, let's not forget Arduino is just an alternative among all of the single-board microcontrollers and microcontroller kits that are currently available on the market.
+
+Nevertheless, for our particular case it completely served the purpose of implementing functional sensors in an straightforward way. Since our goal was to be able to prove this is something that can be done as a ``DIY'' project\cite{diy}, it seemed perfectly appropiate.
+
+On a different subject, the installation. Being able to dockerize our Drupal distribution gives us a tremendous advantage when trying to isolate the system, or reproduce another instances thereof. This is also useful when testing, as we will propably be interested in making sure that we have a clean set up before running some tests.
+
+Last but not least, the sensor module provided by farmOS eases the data collection and also provides some simple graphical support that will surely come in handy for statistical purposes.
 
