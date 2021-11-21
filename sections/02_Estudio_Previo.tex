@@ -26,20 +26,20 @@ In the big picture, farmOS is meant to be a database for the farmer to store inf
 
 In this way, the information starts to create a web of associations and a dataset is developed over time that, later on, will allow the information processing for searching, categorising, sorting or exporting data, depending on the needs of the user. 
 
-
+\vspace{5mm}
 \addcontentsline{toc}{subsubsection}{Example}
 \subsubsection*{Example}
 
 Say a farmer has two areas with two different assets per area to keep track of. Each asset has a log because of some actions that have been taken. Also, there is some information in relation to the area 2 which has also been stored in a log. In farmOS, this scenario could be represented aproximately as shown in the graph below.
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{fig/farmos-structure.png}
     \caption{An example of a web of associations created in farmOS dataset}
     \label{fig:farmos01}
 \end{figure}
 
-
+\vspace{7mm}
 \section{Agrineer}
 Continuing with this very same philosophy about building free software, there exists quite an interesting project, Agrineer. They define themselves as an open source group of computational laboratories dedicated to projects that are both practical and educational, from satellite remote sensing to down-to-earth fablabs\cite{agrineer}.
 
@@ -51,7 +51,7 @@ These tools, specially the SME application, may come in handy when processing, u
 \section{Autonomous agricultural vehicles}
 When technological innovation in agriculture is addressed, autonomous or driverless tractors are often one of the things that may occur to us. There is nothing new in this idea, which as been around us for about 80 years now. John Deere's autonomous tractor\cite{deere-tractor} is a good example of this kind of vehicles, that may play a key role in the not too distant future.
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.75\textwidth]{fig/deere-tractor.jpg}
     \caption{John Deere’s autonomous electric tractor}
@@ -63,19 +63,20 @@ Related to this topic, it is worth mentioning ``Computational applications in ag
 
 The main purpose of PACA is to be able to facilitate the transportation of certain elements along the property. According to the author, PACA can be controlled both remotely as well as manually. It also features a drive system capable of carrying up to 200Kg and can operate independently for about 8 hours.
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/paca.png}
+    \includegraphics[width=0.8\textwidth]{fig/paca.png}
     \caption{Main components of PACA. Source: ``Computational applications in agriculture'' Bachelor's Thesis}
     \label{fig:paca}
 \end{figure}
 
  It is some of the PACA implementation that has served as an inspiration for the development of this very own thesis, more precisely, it has caught our attention the use of the microcontroller ESP8266 in order to create a wifi network so data transmission can be allowed. Although PACA uses a Raspberry single-board computer, it is still of our interest as it can be implemented in Arduino for this same goal.
 
+\vspace{7mm}
 \section{Arduino controller for farming}
 After mentioning some iniciatives whose objective is transform modern agriculture by introducing technological devices and solutions, we will focus now in something a bit more concrete.
 
-As it has been mentioned before, the aim of this thesis is to be able to monitorise a garden. In order to achieve so, we need to program microcontrollers that will collect data from sensors, process it and display information or transform said data, if needed. The choices when speaking about microcontrollers are infinite, because of simplicity and the remarkable community, we are going to concentrate on Arduino.
+As it has been mentioned before, the aim of this thesis is to be able to monitorise a harvest. In order to achieve so, we need to program microcontrollers that will collect data from sensors, process it and display information or transform said data, if needed. The choices when speaking about microcontrollers are infinite, because of simplicity and the remarkable community, we are going to concentrate on Arduino.
 
 As the reader may already be aware of, Arduino is an open-source electronics platform able to perform a wide variety of tasks: reading inputs and turn it into an output, activating a motor, turning on an LED\cite{arduino}, etc.
 
@@ -100,7 +101,7 @@ Among the infinitely many projects trying to achieve a similar result, the GrowB
 \end{table}
 
 
-\section{Conclusiones}
+\section{Conclusions}
 The presence of technology in agriculture is not a new concept whatsoever. Over the years, the progress in technological agriculture has been quite noticeable, not only in the development of machinery but also in specilised software.
 
 Some important companies in the area have invested money in this matter, being John Deere a good example of it. However, there is a lack of software that can be managed, implemented and develop by the user, and that provides a license that allows the farmer to adapt customise it to their needs and that does not depend on the support a third party IT company gives.

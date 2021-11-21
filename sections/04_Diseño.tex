@@ -18,9 +18,9 @@ In the prior study chapter, we already took a very quick look at how farmOS is s
 \subsubsection{Log}
 Very little information was introduced in the previous chapter about logs, which can be understood as the ``when''. There are several categories of logs, with activities log being the most general. Some other categories are input logs, maintenance, sales or observation logs, which are nice to have when writing down extra details about the harvest.
 
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.15\textwidth]{fig/logs_categories.png}
+    \includegraphics[width=0.3\textwidth]{fig/logs_categories.png}
     \caption{The different categories on logs by default}
     \label{fig:logs_categories}
 \end{figure}
@@ -33,47 +33,54 @@ Every item that will be recorded in the system, not matter whether it is a log, 
 \subsubsection{Areas}
 Areas are not absolutely needed as farmOS can perfectly function without any. However the geographical features it provides will surely be useful for larger farms. It allows to switch between base layers: OpenStreetMap and Google.
 
-Quite an interesting feature worth mentioning is the bed generator, really useful for further customization as it allows to divide a crop into beds and add more details to each bed.
+\vspace{5mm}
+Quite an interesting feature worth mentioning is the \textbf{bed generator}, really useful for further customization as it allows to divide a crop into beds and add more details to each bed.
 
 The bed generator requires two parameters, we need to choose which area is going to be divided into beds and how many beds we want. The width of the beds will be automatically calculated by the generator.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.60\textwidth]{fig/bed_gen.png}
+    \includegraphics[width=0.9\textwidth]{fig/bed_gen.png}
     \caption{Main view of the bed generator input form}
     \label{fig:bed_gen}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.60\textwidth]{fig/bed_gen_example.png}
+    \includegraphics[width=0.85\textwidth]{fig/bed_gen_example.png}
     \caption{An area divided into 30 child areas}
     \label{fig:bed_gen}
 \end{figure}
 
-
+\vspace{5mm}
 \subsubsection{People}
 Managing people is another useful feature available in farmOS. Three main roles are defined by deafult: manager, worker and viewer,  where the latter has read-only access. The system does not need to be design only around these roles, because of its Drupal modularity, more roles can be defined. However the standarised hosted system does not include more customisation so as not to conflict with a future version.
 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{fig/people.png}
+    \includegraphics[width=0.8\textwidth]{fig/people.png}
     \caption{Section on different people profiles}
     \label{fig:people}
 \end{figure}
 
+
+\vspace{7mm}
 \section{Field kit}
-A recent add-on to farmOS main project is the field kit\cite{farmos-fieldkit}. Sometimes, we are in the field and we need to write something down, take a quick note or add an observation. However, going back to the office and launching farmOS to introduce this data seems like a bad decision to make. It is not convinient and it takes way too much time if we find ourselves right in the field.
+A recent add-on to farmOS main project is the field kit\cite{farmos-fieldkit}. Sometimes, we are in the field and we need to write something down, take a quick note or add an observation. However, going back to the office and launching farmOS to introduce this data seems like a bad decision to make. It is not convenient and it takes way too much time if we find ourselves right in the field.
 
 This is where field kit comes into play. A day to day app that farmers are actually using on the field. This way, farmOS would become a more advanced interface for DB exploration with planning purposes too.
 
 A feature recently implemented for the field kit is the so called ``quick forms'': a simplified set of forms for introducing data into farmOS that allows to create stuff as a shortcut but in the back, will still create a log. Simple annotations can be easily made using these forms. E.g.: eggs harvest
 
+
+\vspace{7mm}
 \section{Sensors}
 Let's learn a bit about how sensors\cite{farmos-sensors} work on farmOS, as sensor implementation plays a major role in this thesis.
 
-In order to play with sensors we will have to add the sensor module available, this adds the sensor asset as well as some sub-modules that gives us some more flexibilityfor integration with external devices. According to the documentation available online, assembling our own sensors and sending data to farmOS is possible without putting much effort, we would not need to do hard programming or soldering.
+In order to play with sensors we will have to add the sensor module available, this adds the sensor asset as well as some sub-modules that gives us some more flexibility for integration with external devices.
+
+According to the documentation available online, assembling our own sensors and sending data to farmOS is possible without putting much effort, we would not need to do hard programming or soldering.
 
 The main sub-module implemented by default is Listener. As it is quoted in the sensors section provided by the user guide, ``In addition to manually-entered records, farmOS also provides a framework for receiving data from automated environmental sensors.'' This is mainly what Listener sub-module allows. Although it should not be forgotten that for complex data streams a more customized sub-module may be necessary.
 
