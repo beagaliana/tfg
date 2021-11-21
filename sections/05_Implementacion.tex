@@ -73,10 +73,14 @@ Since this is the first piece of code introduced in this project, we will use th
 \vspace{7mm}
 \textbf{Introduction to Arduino program structure}
 
-Before we step in, it catchs our eye that there are two well distingued functions: void setup() and void loop(). There two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
+Before we step in, it catchs our eye that there are two well distingued functions: \verb|void setup()| and \verb|void loop()|. There two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
 
-(error x faltar una funcion mandatory)
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.065\textwidth]{fig/mandatory-fuct-error.png}
+    \caption{Compilation error due to the lack of setup() function}
+    \label{fig:mandatory-fuct-error}
+\end{figure}
 There is actually a really simple reason why. In a tipical C/C++ program, a main function is needed. That is the function that will be called first and at the same time, the function where the rest of functions will be called.
 
 In Arduino there is no main, so instead, we have these two. Now another question might be crossing our minds, which is the purpose of each function?
@@ -380,18 +384,18 @@ These are the steps I followed to install my farmOS.
 \begin{itemize}
     \item Go to the \href{https://github.com/farmOS/farmOS}{farmOS official repository}.
     \item Make sure that you are in the correct version. Although there is a version 2 that has just been released, we are interested in version 7.x-1.x. We will talk about version 2 a bit further.
-    \item Clone the repository in your local machine using Git (\verb|git clone https://github.com/farmOS/farmOS|).
-    \item Go to docker directory and copy the file docker-compose.development.yml to docker-compose.yml. The simplest way to do so is by using the terminal. cp docker-compose.development.yml docker-compose.yml.
+    \item Clone the repository in your local machine using Git. The repo can be cloned by using the command \verb|git clone [link]|.
+    \item Go to docker directory and copy the file \verb|docker-compose.development.yml| to \verb|docker-compose.yml|. The simplest way to do so is by using the terminal: execute \verb|cp docker-compose.development.yml docker-compose.yml|.
 \end{itemize}
 
-You are all set. Execute docker-compose up.
+You are all set. Execute \verb|docker-compose up|.
 
 
 \textbf{Troubleshooting.}
 
 Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
 
-Now we can open our favourite browser and access localhost.
+Now we can open our favourite browser and access \verb|localhost|.
 
 This is a generic Drupal installation screen. Let's jump into the next screen and continue with the installation.
 
@@ -413,7 +417,7 @@ Here's the database configuration screen with a typical error that might be disp
     \label{fig:db-config-drupal}
 \end{figure}
 
-Checking our docker-compose.yml we know that our database name/username/password is farm and the database host is db. Also, we are using port 3306.
+Checking our \verb|docker-compose.yml| we know that our database \textbf{name}, \textbf{username} and \textbf{password} is \verb|farm| and the database \textbf{host} is \verb|db|. Also, we are using \textbf{port} \verb|3306|.
 
 There is some info related to this in the link referenced above, see a picture below.
 
@@ -453,7 +457,6 @@ Without further ado, let's finish the installation
     \label{fig:completing-install}
 \end{figure}
 
-Now we can open our favourite browser and access localhost.
 
 \begin{figure}[H]
     \centering
@@ -541,8 +544,11 @@ For our prototype we will implement FC-28 sensor in farmOS. The first thing to b
     \label{fig:select-sensor}
 \end{figure}
 
-This can also be done by accessing the following route in the browser: localhost/farm/assets/sensors
+This can also be done by accessing the following route in the browser:
 
+\verb|localhost/farm/assets/sensors|
+
+\vspace{7mm}
 Now let's create a sensor by clicking the button Add sensor. For this project I have created a FC-28 sensor.
 
 \begin{figure}[H]
