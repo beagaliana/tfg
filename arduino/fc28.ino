@@ -5,13 +5,13 @@ void setup() {
 }
 
 void loop() {
-  int humidity = analogRead(sensorPin);
+  int moisture = analogRead(sensorPin);
   
-  Serial.print(humidity);
+  Serial.print(moisture);
 
-  if(humidity < 500) {  
-    Serial.println(" - Very wet");
+  if(moisture < 500) {  
+    Serial.println(" - Moisturized");
   } else {
-    Serial.println(" - Very dry");
+    Serial.println(" - Dry");
   }
 }

@@ -5,7 +5,7 @@ There are infinitely many ways of implementing sensors in a computer system. Int
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/mega2560.jpg}
+    \includegraphics[width=0.7\textwidth]{fig/mega2560.jpg}
     \caption{Arduino MEGA 2560 board}
     \label{fig:mega2560}
 \end{figure}
@@ -25,7 +25,7 @@ This FC-28 hygrometer module consists of two probes that measure the volumetric 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth]{fig/fc28.jpg}
+    \includegraphics[width=0.5\textwidth]{fig/fc28.jpg}
     \caption{A FC-28 moisture sensor}
     \label{fig:fc28}
 \end{figure}
@@ -45,7 +45,7 @@ Here's a diagram of the circuit.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/fc28-scheme-circuit.png}
+    \includegraphics[width=0.75\textwidth]{fig/fc28-scheme-circuit.png}
     \caption{Diagram of the circuit for the FC-28}
     \label{fig:fc28-scheme-circuit}
 \end{figure}
@@ -54,13 +54,13 @@ Here's a diagram of the circuit.
 This is how circuit should look like once assembled.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.35\textwidth]{fig/fc28-circuit1.jpg}
+		\includegraphics[width=0.65\textwidth]{fig/fc28-circuit1.jpg}
 		\caption{Board for FC-28 connections}
 	\end{figure}
 	\hfill
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.35\textwidth]{fig/fc28-circuit2.jpg}
+		\includegraphics[width=0.65\textwidth]{fig/fc28-circuit2.jpg}
 		\caption{LM293 comparator}
 	\end{figure}
 
@@ -112,18 +112,28 @@ This pretty much sums up the code of the FC-28 sensor as well as the main struct
 
 After understanding a bit how the FC-28 sensor works. Let's see a real life practical example of how this actually works.
 
-\textbf{First case scenario: a really dry Erica} \\
-For our particular example we have this beautiful Erica plant. It is planted in a simple plastic pot, and at this precise moment it is absolutely dry.
+\textbf{First case scenario: a really dry silver vine} \\
+For our particular example we have this beautiful Scindapsus pictus plant, commonly referred as silver vine. It is planted in a simple plastic pot, and at this precise moment it is absolutely dry.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{fig/erica.jpg}
-    \caption{Erica with FC-28 sensor}
+    \includegraphics[width=0.65\textwidth]{fig/silvervine.jpeg}
+    \caption{Scindapsus pictus}
     \label{fig:erica}
 \end{figure}
 
 
-Installing the hygrometer sensor is trivial, we just need to insert in the soil carefully so the roots of the plant will not get damaged. Now let's start our Arduino program and see what output is printing.
+Installing the hygrometer sensor is trivial, we just need to insert in the soil carefully so the roots of the plant will not get damaged.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{fig/silvervinefc28.jpg}
+    \caption{Scindapsus pictus with FC-28 sensor}
+    \label{fig:ericafc28}
+\end{figure}
+
+
+Now let's start our Arduino program and see what output is printing.
 
 \begin{figure}[H]
     \centering
@@ -137,7 +147,7 @@ It is indicating the soil is very dry, as it was to be expected.
 \textbf{Second case scenario: watered Erica} \\
 Without changing the FC-28 sensor or stopping our current Arduino process, let's water Erica and see how the output changes.
 
-WATERED ERICA
+As it can be observed, the output of our Arduino changed to ''Moisturized´´. This is quite a simple procedure to check the sensor is behaving as it should, but it is definitely more than enough to server our purpose.
 
 \begin{figure}[H]
     \centering
@@ -147,27 +157,12 @@ WATERED ERICA
 \end{figure}
 
 
-As it can be observed, this is quite a simple procedure to check the sensor is behaving as it should, but it is definitely more than enough to server our purpose.
-
-\subsection{Temperature sensor}
-The DHT11 sensor\cite{dht11-manual} allows us to measure both temperature and humidity. It consists of an 8-bit microcontroller and two sensors tucked into a tiny blue plastic box. In this section we will see how to measure temperature, in the following section we will focus in measuring humidity.
+\subsection{LDR Sensor}
+LDR\cite{ldr}, which stands for Light Dependent Resistor, sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{fig/dht11.jpg}
-    \caption{A DHT11 sensor}
-    \label{fig:dht11}
-\end{figure}
-
-There are many applications for this sensor, it can be implemented as dehumidifier, for automatic control, data loggers or even weather stations. 
-
-
-\subsection{LDR Sensor}
-LDR\cite{ldr} (which stands for Light Dependent Resistor) sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=0.35\textwidth]{fig/ldr.jpg}
+    \includegraphics[width=0.4\textwidth]{fig/ldr.jpg}
     \caption{A LDR sensor}
     \label{fig:ldr}
 \end{figure}
@@ -178,7 +173,7 @@ This is a general view of how the LDR sensor looks connected to the Arduino boar
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{fig/ldr-circuit.jpg}
+    \includegraphics[width=0.9\textwidth]{fig/ldr-circuit.jpg}
     \caption{A LDR sensor}
     \label{fig:ldr}
 \end{figure}
@@ -217,7 +212,7 @@ Some applications, besides of course the ones more related to security such as i
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.35\textwidth]{fig/pir.jpg}
+    \includegraphics[width=0.4\textwidth]{fig/pir.jpg}
     \caption{Frontal view of PIR motion sensor}
     \label{fig:pir}
 \end{figure}

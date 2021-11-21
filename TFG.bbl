@@ -151,7 +151,7 @@ Arduino.cc
 \newblock URL
 \url{https://www.arduino.cc/reference/en/language/functions/communication/serial/begin}.
 
-\bibitem[electronicsnotes]{ldr}
+\bibitem[electronicsnotes()]{ldr}
 electronicsnotes
 \newblock Light Dependent Resistor LDR: Photoresistor
 \newblock URL
