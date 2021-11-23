@@ -16,17 +16,6 @@ void loop() {
   else digitalWrite(2,LOW); //turn relay OFF
   delay(100);
 
-  if (sensorValue <=5) {
-    digitalWrite(ledPin, HIGH);
-    Serial.println("LDR is DARK, LED is ON");
-
-  }
-  else {
-    digitalWrite(ledPin, LOW);
-    Serial.println("---------------");
-
-  }
-
 }
 
 

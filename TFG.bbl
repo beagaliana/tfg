@@ -157,6 +157,32 @@ electronicsnotes
 \newblock URL
 \url{https://www.electronics-notes.com/articles/electronic_components/resistors/light-dependent-resistor-ldr.php}.
 
+\bibitem[docker()]{docker}
+Docker
+\newblock
+\newblock URL
+\url{https://www.docker.com/}.
+
+\bibitem[docker-compose()]{docker-compose}
+Docker docs
+\newblock URL Overview of Docker Compose
+\url{https://docs.docker.com/compose/}.
+
+\bibitem[dockerfile()]{dockerfile}
+Docker docs
+\newblock Dockerfile reference
+\url{https://docs.docker.com/engine/reference/builder/}.
+
+\bibitem[podman()]{podman}
+Podman
+\newblock
+\url{https://podman.io/}.
+
+\bibitem[dockerhub()]{dockerhub}
+dockerhub
+\newblock Docker Hub Container Image Library
+\url{https://hub.docker.com/search?type=image}.
+
 \bibitem[diy(2011)]{diy}
 Marco Wolf, Shaun McQuitty
 \newblock Understanding the do-it-yourself consumer: DIY motivations and outcomes, December 2011
