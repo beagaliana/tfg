@@ -11,12 +11,13 @@ There are infinitely many ways of implementing sensors in a computer system. Int
 \end{figure}
 
 
-
+\vspace{7mm}
 \section{Sensors' implementation}
 Let's take a look at some of the options that the different sensors offer. In this section we will specify some sensors in order to understand what these components are capable of, then, we will implement the two of them that are considered to be more crucial in harvesting, since those are the ones that we are interested in for this prototype. 
 
 We know we will be working with an Arduino MEGA 2560 board, but it goes without saying, we will also need some more components. 
 
+\vspace{7mm}
 \subsection{FC-28 Soil Moisture Sensor}
 Soil moisture sensor\cite{fc28} is likely the main sensor when harvesting is concerned as it helps farmers manage their irrigation systems more efficiently. This won't only save water but will also increase the quality of the crops since it can control moisture to the milimeter at all diferent plant growth stages. In this section, we are going to be documenting the process of using the sensor FC-28 with our Arduino board.
 
@@ -41,6 +42,8 @@ Let's implement a small script to understand the behaviour of the sensor. The ci
 	\item The GND of the FC-28 goes to GND of the Arduino
 	\item The pin A0 of the FC-28 goes to the pin A0 of the Arduino
 \end{itemize}
+
+\vspace{5mm}
 Here's a diagram of the circuit.
 
 \begin{figure}[H]
@@ -50,7 +53,7 @@ Here's a diagram of the circuit.
     \label{fig:fc28-scheme-circuit}
 \end{figure}
 
-
+\vspace{5mm}
 This is how circuit should look like once assembled.
 	\begin{figure}[H]
 		\centering
@@ -64,16 +67,21 @@ This is how circuit should look like once assembled.
 		\caption{LM293 comparator}
 	\end{figure}
 
+\vspace{7mm}
+\subsection{Code}
 Now let's take a look at the script that is going to make the sensor work
 
 \lstinputlisting{arduino/fc28.ino}
 
+\vspace{7mm}
 Since this is the first piece of code introduced in this project, we will use this FC-28 sensor code to explain just a bit of how code is structured in Arduino and why it has to be this way. For the rest of the sensors, the code is more less similar so the explanation of the code will be more straight-forward.
 
 \vspace{7mm}
 \textbf{Introduction to Arduino program structure}
 
-Before we step in, it catchs our eye that there are two well distingued functions: \verb|void setup()| and \verb|void loop()|. There two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
+Before we step in, it catches our eye that there are two well distingued functions: \verb|void setup()| and \verb|void loop()|.
+
+These two functions are \textbf{mandatory} in Arduino. If we try to execute code that lacks any of them, we'll get an error. See an example below.
 
 \begin{figure}[H]
     \centering
@@ -86,38 +94,44 @@ There is actually a really simple reason why. In a tipical C/C++ program, a main
 In Arduino there is no main, so instead, we have these two. Now another question might be crossing our minds, which is the purpose of each function?
 
 \begin{itemize}
-	\item \textbf{setup().} The code inside this function will be execute exactly once at the very beginning of the execution. Some examples of instructions that typically go inside setup() are pinMode, Serial.begin, initialisation of libraries that might be included, etc.
+	\item \textbf{setup().} The code inside this function will be execute exactly once at the very beginning of the execution. Some examples of instructions that typically go inside \verb|setup()| are \verb|pinMode|, \verb|Serial.begin|, initialisation of libraries that might be included, etc.
 	\item \textbf{loop().} This is the main function of the program, all the code written here will be executed again and again as long as the Arduino board is enabled, of course that is why is the loop function. It goes from the very first line until the last one secuentially, skipping inmediately to the line 1 again. It'll go like this forever as long as the board is provided with electrical supply.
 \end{itemize}
 
-\newpage
+\vspace{7mm}
 
 \textbf{FC-28 code explanation}
 
-Enough of Arduino syntax, let's jump in the FC-28 code. In line 1 we are defining the Arduino pin that will read the data gathered from the sensor, for this particular case we have decided the pin will be A0.
+Enough of Arduino syntax, let's jump in the \textbf{FC-28 code}.
 
-We jump now inside of setup() and we find Serial.begin(9600);. If the reader has had the chance to read some Arduino scripts, that line will surely ring a bell, but why do we need to use if? What happens if you change 9600 to another value? What does 9600 even mean?
+In \textbf{line 1} we are defining the Arduino pin that will read the data gathered from the sensor, for this particular case we have decided the pin will be \verb|A0|.
 
-Serial.begin() establishes a serial communication between our Arduino board and another device, in this case the other device is my laptop via USB cable. Once that communication has been established the devices can exchange information using a serial protocol.
+We jump now inside of \verb|setup()| and we find \verb|Serial.begin(9600);|. If the reader has had the chance to read some Arduino scripts, that line will surely ring a bell, but why do we need to use if? What happens if you change 9600 to another value? What does 9600 even mean?
 
-This explains as well why this instruction is written in setup() function: we know that will only be executed once and we will only need to establish serial communication once.
+\verb|Serial.begin()| establishes a serial communication between our Arduino board and another device, in this case the other device is my laptop via USB cable. Once that communication has been established the devices can \textbf{exchange information using a serial protocol}.
+
+This explains as well why this instruction is written in \verb|setup()| function: we know that will only be executed once and we will only need to establish serial communication once.
 
 In regards to the number 9600, we are talking here about the \textbf{baud rate}. This is the data rate in bits per second for serial data transmission \cite{baud}. The default value for Arduino is 9600.
 
-Let's go now to line 8, already inside of the infinite loop. We see a variable is declared there, humidity, it is reading from the sensorPin we've defined before. The reason why we are using analogRead instead of digital is because digital values are only 1 or 0. So if we were to use digitalRead(), it will just return the rounded the analog value. It is more suitable for gathering sensor data to use analogRead().
+\vspace{5mm}
+Let's go now to \textbf{line 8}, already inside of the infinite loop. We see a variable is declared there, \verb|moisture|, it is reading from the sensor pin we've defined before. The reason why we are using \verb|analogRead()| instead of digital is because digital values are only 1 or 0. So if we were to use \verb|digitalRead()|, it will just return the rounded the analog value. It is more suitable for gathering sensor data to use \verb|analogRead()|.
 
-Good. So now we have a variable humidity that stores the analog value from the FC-28 sensor. Let's print it. As it was mentioned before, FC-28 value range goes from  to 1023, so 500 sounds like a reasonable mid point. As a first approach, we will set 500 as the breakpoint for determining whether it is very wet or very dry with a simple conditional.
+Good. So now we have a variable \verb|moisture| that stores the analog value from the FC-28 sensor. Let's print it. As it was mentioned before, FC-28 value range goes from  to 1023, so 500 sounds like a reasonable mid point. As a first approach, we will set 500 as the breakpoint for determining whether it is very wet or very dry with a simple conditional.
 
-We will make this code a bit more especific in the implementation, but in this section we are mainly interested in understanding the sensor behaviour.
+This can be defined a bit more specifically if needed, for example, by using percentages.
 
 This pretty much sums up the code of the FC-28 sensor as well as the main structure of an Arduino program.
 
+\vspace{7mm}
 \subsubsection{Example: two cases scenarios for this code.}
 
 After understanding a bit how the FC-28 sensor works. Let's see a real life practical example of how this actually works.
 
+\vspace{5mm}
 \textbf{First case scenario: a really dry silver vine} \\
-For our particular example we have this beautiful Scindapsus pictus plant, commonly referred as silver vine. It is planted in a simple plastic pot, and at this precise moment it is absolutely dry.
+
+For our particular example we have this beautiful \textbf{Scindapsus pictus} plant, commonly referred as silver vine. It is planted in a simple plastic pot, and at this precise moment it is absolutely dry.
 
 \begin{figure}[H]
     \centering
@@ -148,10 +162,11 @@ Now let's start our Arduino program and see what output is printing.
 
 It is indicating the soil is very dry, as it was to be expected.
 
+\vspace{7mm}
 \textbf{Second case scenario: watered Erica} \\
 Without changing the FC-28 sensor or stopping our current Arduino process, let's water Erica and see how the output changes.
 
-As it can be observed, the output of our Arduino changed to ''Moisturized´´. This is quite a simple procedure to check the sensor is behaving as it should, but it is definitely more than enough to server our purpose.
+As it can be observed, the output of our Arduino changed to moisturized. This is quite a simple procedure to check the sensor is behaving as it should, but it is definitely more than enough to server our purpose.
 
 \begin{figure}[H]
     \centering
@@ -160,7 +175,7 @@ As it can be observed, the output of our Arduino changed to ''Moisturized´´. T
     \label{fig:humid-soil}
 \end{figure}
 
-
+\newpage
 \subsection{LDR Sensor}
 LDR\cite{ldr}, which stands for Light Dependent Resistor, sensor is a device used to detect light, it is a resistor made of semiconductor materials. This sensor is really sensitive to light. The stronger the light is, the lower the resistance. There are several uses for this kind of sensor, not only can you measure the value but also turn ON and OFF the light depending on the ambient light intensity.
 
@@ -171,6 +186,7 @@ LDR\cite{ldr}, which stands for Light Dependent Resistor, sensor is a device use
     \label{fig:ldr}
 \end{figure}
 
+\vspace{7mm}
 \subsubsection{Using the sensor}
 
 This is a general view of how the LDR sensor looks connected to the Arduino board in a real life scenario.
@@ -182,23 +198,35 @@ This is a general view of how the LDR sensor looks connected to the Arduino boar
     \label{fig:ldr}
 \end{figure}
 
+\vspace{7mm}
+\textbf{Code} \\
+
 Here's a piece of code that will start the sensor and get it to work.
 \lstinputlisting{arduino/ldr.ino}
 
 \textbf{LDR code explanation}
 
-In lines 2, 3 and 4 we will initialise the variables we are going to be using for this program.
+In \textbf{lines 2, 3 and 4} we will initialise the variables we are going to be using for this program.
 \begin{itemize}
-	\item sensorPin A0 is the input pin that will gather information from the LDR
-	\item sensorValue will store the value whatever sensorPin has found coming from the sensor
-	\item ledPin will be the output pin connected to the LED
+	\item \verb|sensorPin A0| is the input pin that will gather information from the LDR
+	\item \verb|sensorValue| will store the value whatever \verb|sensorPin| has found coming from the sensor
+	\item \verb|ledPin| will be the output pin connected to the LED
 \end{itemize}
 
-In the setup() the ledPin mode will be set as output pin 2.
+\vspace{5mm}
+In the \verb|setup()| the \verb|ledPin| mode will be set as output pin \verb|2|.
 
-It gets a bit more interesting in the loop() function. As we did for FC-28, here we are also using analogRead to get the value from sensorPin, for the same reasons that we did in FC-28 too. Then we print the value coming from the sensor as this information might be useful for the user.
+\vspace{5mm}
+It gets a bit more interesting in the \verb|loop()| function. As we did for FC-28, here we are also using \verb|analogRead| to get the value from \verb|sensorPin|, for the same reasons that we did in FC-28 too. Then we print the value coming from the sensor as this information might be useful for the user.
 
-In line 14, there is a simple if conditional. A
+\vspace{5mm}
+In \textbf{line 14}, there is a simple if conditional that will set the LED on and off depending on the values the sensor is gathering.
+
+\vspace{7mm}
+\textbf{Circuit diagram}
+
+Here's a view of the diagram representing the circuit we have implemented.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{fig/ldr-scheme-circuit.png}
@@ -206,14 +234,19 @@ In line 14, there is a simple if conditional. A
     \label{fig:ldr}
 \end{figure}
 
-
+\vspace{7mm}
 \subsubsection{Testing}
+For testing this sensor, we have placed the LDR sensor in a dark room, where the LED was on, due to the obvious lack of light. Then we have pointed a flashlight to it, observing how the LED connected to the board, turned off due to the sudden change of luminosity.
 
+
+\vspace{7mm}
 \subsection{PIR Motion sensor}
-Another interesting asset that is about to be specified is the passive infrared motion sensor\cite{pir-guide}. In a nutshell, it can detect movement of objects that radiate infrared light, like humans. Because of this, and its eficiency and unexpensiveness, it's a sensor relatively common in security systems and it can have a lot of different applications in farming.
+Another interesting asset that is about to be specified is the \textbf{passive infrared motion sensor}\cite{pir-guide}. In a nutshell, it can detect movement of objects that radiate infrared light, like humans. Because of this, and its eficiency and unexpensiveness, it's a sensor relatively common in security systems and it can have a lot of different applications in farming.
 
+\vspace{5mm}
 Some applications, besides of course the ones more related to security such as intruder detection, might include automatically switching ON and OFF several devices. See for example turning on a light when movement is detected, so the farmer or worker can forget about lighting and just focus in the main task.
 
+\vspace{5mm}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{fig/pir.jpg}
@@ -224,6 +257,7 @@ Some applications, besides of course the ones more related to security such as i
 
 There are several models of PIR motion sensors, but they all work pretty much in the same way. Let's see a bit of that.
 
+\vspace{5mm}
 They usually have a VCC pin, a GND pin and a digital output. The spherical form of the sensor improves the viewing angle. The PIR output can be connected to any digital pin of our Arduino board, the pin value will be set to "1" is the sensor detects any movement.
 
 This is how a PIR sensor looks like upside down.
@@ -244,6 +278,7 @@ In this image, obtained from the Theory Circuit\cite{theory-circuit} blog, we ca
 	\item \textbf{Repeat Trigger Mode(H).} For this position the sensor will turn on every time motion is derected and turn off a bit after the last motion. The way this works is by reseting the timer every single time a motion is detected. This is also called "retriggering". This mode is preferable for most applications, and it is the one we will be using in this project.
 \end{itemize}
 
+\vspace{5mm}
 \subsubsection{Using the sensor}
 Now that we have talked a bit about the behaviour of this PIR sensor, let's see how it can be implemented with a really simple example. In order to do so, let's start by taking a look at the circuit.
 
@@ -258,6 +293,9 @@ In the circuit we have used a LED that will turn on when movement is detected. A
 
 The output of the PIR sensor goes to pin 2 and then the pin 13 is connected to the LED. As it can be easily guessed, the LED pin will be set to OUTPUT mode and PIR pin to INPUT.
 
+
+\vspace{7mm}
+\subsubsection{Code}
 Here's a few lines of code for the circuit below.
 
 \lstinputlisting{arduino/pir.ino}
@@ -265,21 +303,22 @@ Here's a few lines of code for the circuit below.
 \vspace{5mm}
 \textbf{PIR code explanation}
 
-This structure is pretty much the same as what we have seen in the previous code explanations. There is, however, something interesting in line 12 and 16. We have some HIGH and LOW values.
+This structure is pretty much the same as what we have seen in the previous code explanations. There is, however, something interesting in \textbf{line 12 and 16}. We have some \verb|HIGH| and \verb|LOW| values.
 
-We have not used this values before, le0x1t's use them now. We can take a look at \verb|hardware/arduino/cores/arduino/Arduino.h| file. If we go to lines 18 and 19 of this file we can find the following:
+We have not used this values before, let's use them now. We can take a look at \verb|hardware/arduino/cores/arduino/Arduino.h| file. If we go to \textbf{lines 18 and 19} of this file we can find the following:
 \begin{verbatim}
     18 #define HIGH 0x1
     19 #define LOW  0x0
 \end{verbatim}
 We can see this are values defined in hexadecimal, if we convert this to decimal, we have 1 and 0 respectively.
 
-Back to the code. If we get a 1 in pirStat then we will get a message saying `Hey! I got you' and it will turn the led on thanks to digitalWrite.
+Back to the code. If we get a 1 in \verb|pirStat| then we will get a message saying \verb|`Hey! I got you'| and it will turn the led on thanks to \verb|digitalWrite|.
 
 In any other case, we have no movement so the led will be turned off.
 
+\vspace{7mm}
 \subsection{Ultrasonic sensor}
-This ultrasonic distance sensor provides precise, non-contact distance measurements. It works in the same way as bats do: they emit quick and high-frequency sounds pulses, if they hit an object then then the signal comes back to the sensor.
+This \textbf{ultrasonic distance sensor} provides precise, non-contact distance measurements. It works in the same way as bats do: they emit quick and high-frequency sounds pulses, if they hit an object then then the signal comes back to the sensor.
 
 \begin{figure}[H]
     \centering
@@ -290,7 +329,7 @@ This ultrasonic distance sensor provides precise, non-contact distance measureme
 
 In the previous section, we have seen a PIR sensor. It is interesting to see which are the main differences between these two components that may seem similar but they definitely are not.
 
-	The main difference is the way in which they work: ultrasonic sensors use echolocation\cite{echolocation}, roughly that is the ability to find out the current location using reflected sound, whereas PIR sensors use infrared rays to decide whether there is anyone present.
+	The main difference is the way in which they work: ultrasonic sensors use \textbf{echolocation}\cite{echolocation}, roughly that is the ability to find out the current location using reflected sound, whereas PIR sensors use infrared rays to decide whether there is anyone present.
 
 	Using one or another depends on the needs of the user. If only interested in knowing if there is someone or not, PIR sensor is possibly a better choice. However, if knowing the distance to the object is needed, then we need to use an ultrasonic sensor.
 
@@ -317,10 +356,10 @@ We are starting this code by defining a variable what will count centimeters, th
 \section{Raspberry Pi server hosting}
 
 \subsection{Introduction}
-In this chapter we will walk through the installation and set up of a farmOS system in an Ubuntu Server hosted in a Raspberry Pi.
+In this chapter we will walk through the installation and set up of a farmOS system in an \textbf{Ubuntu Server} hosted in a \textbf{Raspberry Pi}.
 
 \subsection{Raspberry Pi configuration}
-For our particular case we will be using a Raspberry Pi 4 Model B computer with 2GB RAM. The operating system that will be used is Ubuntu Server 20.
+For our particular case we will be using a \textbf{Raspberry Pi 4 Model B computer with 2GB RAM}. The operating system that will be used is Ubuntu Server 20.
 
 The installation is trivial thanks to the Raspberry Pi Imager, an imaging utility provided by Raspberry in March last year. \href{https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview}{This} is the tutorial provided by Ubuntu on how to install Ubuntu server in Raspberry Pi using the Raspberry Imager.
 
@@ -329,7 +368,8 @@ After following the tutorial and configuring our Internet connection, we have th
 
 Testing different environments is objectively tricky. We sometimes do not know the whole configuration, we might encounter problems in some environments that are not appearing in others, etc. That is to say we sometimes do not know how our program is going to behave because of the features of the environment that it is being run in. This is something far from desirable.
 
-This is where Docker plays a role. It allows our program, or in this particular case farmOS, to run isolated from the rest of your machine. It will run in its very own Docker container with everything is needs to correctly be executed to ensure it works seamlessly in any environment. 
+\vspace{5mm}
+This is where \textbf{Docker}\cite{docker} plays a role. It allows our program, or in this particular case farmOS, to run isolated from the rest of your machine. It will run in its very own Docker container with everything is needs to correctly be executed to ensure it works seamlessly in any environment.
 
 \begin{figure}[H]
     \centering
@@ -338,26 +378,31 @@ This is where Docker plays a role. It allows our program, or in this particular 
     \label{fig:docker-logo}
 \end{figure}
 
-Docker has a tremendous documentation but we will not be extending any more on this topic, as it is out of the project scope. However, we will elaborate just a bit on docker-compose. As it is the tool we are going to be using to install farmOS.
+\vspace{7mm}
+Docker has a tremendous documentation but we will not be extending any more on this topic, as it is out of the project scope. However, we will elaborate just a bit on \textbf{docker-compose}\cite{docker-compose}. As it is the tool we are going to be using to install farmOS.
 
 This is the definition that can be found in the docker docs.
 
 \say{Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.}
 
+\vspace{5mm}
 In the same documentation we can also find a well-defined, three-step process to use Compose:
 \begin{itemize}
-	\item Define your app’s environment with a Dockerfile so it can be reproduced anywhere.
-	\item Define the services that make up your app in docker-compose.yml so they can be run together in an isolated environment.
-	\item Run docker compose up and the Docker compose command starts and runs your entire app. You can alternatively run docker-compose up using the docker-compose binary.
+	\item Define your app’s environment with a \verb|Dockerfile|\cite{dockerfile} so it can be reproduced anywhere.
+	\item Define the services that make up your app in \verb|docker-compose.yml so| they can be run together in an isolated environment.
+	\item Run \verb|docker compose up| and the Docker compose command starts and runs your entire app. You can alternatively run docker-compose up using the docker-compose binary.
 \end{itemize}
 
-There are some examples as well and a ton of references to useful links, but in simpler words, docker-compose will serve us as a way of managing several containers at once by defining them all in a configuration file. As the reader might have guessed at this point, this is not entirely necesary for us to install and run farmOS, but it is the way the maintainers of the project advise to do it and it also give us scalability that might come in handy in a future.
+\vspace{7mm}
+There are some examples as well and a ton of references to useful links, but in simpler words, \verb|docker-compose| will serve us as a way of managing several containers at once by defining them all in a configuration file. As the reader might have guessed at this point, this is not entirely necesary for us to install and run farmOS, but it is the way the maintainers of the project advise to do it and it also give us scalability that might come in handy in a future.
 
-Since we are speaking about containers, let's just mention Podman before closing this topic. We are not actually going to be using it as farmOS developers use Docker and we want to have our farmOS up and running as soon as possible. However, PODMAN deserves a mention as an alternative to Docker.
+\vspace{7mm}
+Since we are speaking about containers, let's just mention \textbf{Podman}\cite{podman} before closing this topic. We are not actually going to be using it as farmOS developers use Docker and we want to have our farmOS up and running as soon as possible. However, PODMAN deserves a mention as an alternative to Docker.
 
-The only way of implementing containers is not Docker, there is a whole world beyond. Podman is an open-source tool developed by RedHat. As an advantage, Podman does not use a daemon to manage containers, unlike Docker, which could mean more reliability as it does not depend on a single point. For example, in Docker, if there was a problem with the daemon, we cannot run or manage containers.
+\vspace{7mm}
+The only way of implementing containers is not Docker, there is a whole world beyond. \textbf{Podman is an open-source tool developed by RedHat}. As an advantage, Podman does not use a daemon to manage containers, unlike Docker, which could mean more reliability as it does not depend on a single point. For example, in Docker, if there was a problem with the daemon, we cannot run or manage containers.
 
-Another great pro is that Podman uses exactly the same commands than Docker. Engineers developing the tool did not want to make it confusing so they just used the very same commands. Which means that you could even create an alias docker=podman and start using Podman as if you were using Docker. 
+Another great pro is that Podman uses exactly the same commands than Docker. Engineers developing the tool did not want to make it confusing so they just used the very same commands. Which means that you could even create an \verb|alias docker=podman| and start using Podman as if you were using Docker.
 
 \begin{figure}[H]
     \centering
@@ -369,6 +414,7 @@ Another great pro is that Podman uses exactly the same commands than Docker. Eng
 
 Long story short, Podman is, in general terms, more secure than Dockers and offers a few advantages to be taken into account. Again, we are not going to be using it but we considered it was something worthy to be mentioned in this section.
 
+\vspace{7mm}
 \subsubsection{Getting our hands dirty: farmOS installation}
 Without further ado, let's get to it. First step is to go to the documentation of farmOS. The installation is described as a tutorial so we will not spend much time on doing this. Let's follow the tutorial and see if we success. 
 
@@ -376,10 +422,11 @@ This is the \href{https://farmos.org/hosting/docker/}{link}.
 
 Since the tutorial is pretty well defined. We will do a bit of a sum up here in order to understand what's going on during a farmOS installation using Docker.
 
-Honestly, there are many ways to install a Drupal site using Docker. You can browse through dockerhub and just pull the \href{https://hub.docker.com/r/farmos/farmos}{farmOS image} and take a look at the documentation written there. Then, we could run the container and the service will be up.
+Honestly, there are many ways to install a Drupal site using Docker. You can browse through dockerhub\cite{dockerhub} and just pull the \href{https://hub.docker.com/r/farmos/farmos}{farmOS image} and take a look at the documentation written there. Then, we could run the container and the service will be up.
 
 However, for this project, we will be using docker-compose as Drupal requires a database, it is pretty useful to dockerize both services.
 
+\vspace{7mm}
 These are the steps I followed to install my farmOS.
 \begin{itemize}
     \item Go to the \href{https://github.com/farmOS/farmOS}{farmOS official repository}.
@@ -390,11 +437,12 @@ These are the steps I followed to install my farmOS.
 
 You are all set. Execute \verb|docker-compose up|.
 
-
+\vspace{7mm}
 \textbf{Troubleshooting.}
 
-Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new docker-composer.yml and change the ports defined there.
+Some errors I usually find every now and then is the ports being used by other service. This is something fairly common if you are used to managing several docker services at once. For a quick fix, just go to our brand-new \verb|docker-composer.yml| and change the ports defined there.
 
+\vspace{7mm}
 Now we can open our favourite browser and access \verb|localhost|.
 
 This is a generic Drupal installation screen. Let's jump into the next screen and continue with the installation.
@@ -406,8 +454,8 @@ This is a generic Drupal installation screen. Let's jump into the next screen an
     \label{fig:farmos-drupal-install}
 \end{figure}
 
-We need to be careful when configuring the database. If the data introduced is not correct, we will be gettings errors and the installer won't let us continue with the installation process.
-The data that needs to be introduced in the database is the one appearing in the docker-compose.yml file. Also here's a link with some more information about \href{https://farmos.org/development/docker/}{developing farmOS with docker}, it might come in handy during the completition of the procedure.
+We need to be careful when \textbf{configuring the database}. If the data introduced is not correct, we will be gettings errors and the installer won't let us continue with the installation process.
+The data that needs to be introduced in the database is the one appearing in the \verb|docker-compose.yml| file. Also here's a link with some more information about \href{https://farmos.org/development/docker/}{developing farmOS with docker}, it might come in handy during the completition of the procedure.
 
 Here's the database configuration screen with a typical error that might be displayed if the data introduced is not correct.
 \begin{figure}[H]
@@ -428,6 +476,7 @@ There is some info related to this in the link referenced above, see a picture b
     \label{fig:db-setup-tutorial}
 \end{figure}
 
+\vspace{7mm}
 After correctly configuring the database, there is a list of the modules that can be installed by default with the farmOS installation.
 
 \begin{figure}[H]
@@ -468,11 +517,11 @@ Without further ado, let's finish the installation
 There it is, a nice farmOS instance up and running.
 
 
-
+\vspace{7mm}
 \section{Arduino and server communication}
 Let's jump in into a really interesting section. How can we establish a communication between our Arduino board, that is collecting sensor data, and the server we just built?
 
-Well, luckily for us, there is quite an useful module called Arduino Ethernet Shield that will connect our board to the Internet in no time.
+Well, luckily for us, there is quite an useful module called \textbf{Arduino Ethernet Shield} that will connect our board to the Internet in no time.
 
 \subsection{Ethernet shield}
 This device that you can see in the picture below connects to the internet using a RJ45 cable, which is basically the regular Ethernet cable we are totally used to seeing pretty much everywhere.
@@ -484,6 +533,7 @@ This device that you can see in the picture below connects to the internet using
     \label{fig:ethernet}
 \end{figure}
 
+\vspace{7mm}
 \subsubsection{Connecting to the Internet}
 Let's start by the beginning, we need to be able to connect to the Internet. This will assure as well that our Arduino is working properly, as well as the Ethernet shield.
 
@@ -532,10 +582,11 @@ There it is. The current IP address is \verb|192.168.8.118|.
 
 The next step is to write a script so that we can send information, that is make our Arduino device a client and establish a cliente-server communication between the Arduino board and the server hosted on the Raspberry.
 
+\vspace{7mm}
 \subsection{Sending sensor data to farmOS}
 Before continuing with more Arduino scripts let's go back to our farmOS instance. How can we send data?
 
-For our prototype we will implement FC-28 sensor in farmOS. The first thing to be done is to add the sensor to the system. In order to do so, we need to go to the sensor section, which can be done by navigating to Assets>Sensors as it shown in the image below.
+For our prototype we will implement FC-28 sensor in farmOS. The first thing to be done is to add the sensor to the system. In order to do so, we need to go to the sensor section, which can be done by navigating to \verb|Assets>Sensors| as it shown in the image below.
 
 \begin{figure}[H]
     \centering
@@ -549,7 +600,7 @@ This can also be done by accessing the following route in the browser:
 \verb|localhost/farm/assets/sensors|
 
 \vspace{7mm}
-Now let's create a sensor by clicking the button Add sensor. For this project I have created a FC-28 sensor.
+Now let's create a sensor by clicking the button \verb|Add sensor|. For this project I have created a FC-28 sensor.
 
 \begin{figure}[H]
     \centering
@@ -558,7 +609,7 @@ Now let's create a sensor by clicking the button Add sensor. For this project I 
     \label{fig:created-sensor}
 \end{figure}
 
-The reader might have noticed that the sensor type is listener. The farm sensor listener is a submodule that extends the Sensor asset type by providing integration with external devices. To connect to specific types of sensors, additional modules can be built. For more information in relation to farm sensors, refer to the \href{https://farmos.org/guide/assets/sensors/}{documentation}.
+The reader might have noticed that the sensor type is \textbf{listener}. The farm sensor listener is a submodule that extends the Sensor asset type by providing integration with external devices. To connect to specific types of sensors, additional modules can be built. For more information in relation to farm sensors, refer to the \href{https://farmos.org/guide/assets/sensors/}{documentation}.
 
 Let's now take a look at the sensor configuration. In the general tab we can find some basic configuration such as the name, description, location and so on.
 
