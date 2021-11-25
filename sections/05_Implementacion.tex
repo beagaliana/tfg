@@ -68,7 +68,7 @@ This is how circuit should look like once assembled.
 	\end{figure}
 
 \vspace{7mm}
-\subsection{Code}
+\textbf{Code}
 Now let's take a look at the script that is going to make the sensor work
 
 \lstinputlisting{arduino/fc28.ino}
@@ -336,6 +336,9 @@ In the previous section, we have seen a PIR sensor. It is interesting to see whi
 	Notice as well that PIR sensors do not detect intert bodies, that is definitely something to take into account if we are not only interested in detecting humans or animals.
 
 Further, more detailed specifications can be found in the datasheet\cite{ultrasonic-datasheet}
+
+\vspace{7mm}
+Down below we can take a look at the circuit diagram of the Arduino setup for the ultrasonic sensor.
 		
 \begin{figure}[H]
     \centering
@@ -344,15 +347,61 @@ Further, more detailed specifications can be found in the datasheet\cite{ultraso
     \label{fig:ultrasonic-scheme-circuit}
 \end{figure}
 
+\vspace{7mm}
+Let's take a look at the code.
+
 
 \lstinputlisting{arduino/ultrasonic.ino}
 
 \textbf{Ultrasonic sensor code explanation}
 
-We are starting this code by defining a variable what will count centimeters, these is of course the distance from the object (or obstacle) being measured to the ultrasonic sensor.
+The code implemented for this sensor is slightly different to the previous scripts we have seen before, as we need to define an extra function besides of course the two functions that Arduino requires.
 
+We will define the function \verb|readDistanceInches()| that will describe and convert the sensor behaviour into inches. We will do the conversion from inches into centimeters later on, in the \verb|loop()| function.
 
+\vspace{5mm}
+\textbf{readDistanceInches() code}
 
+It is not entirely necessary to define the \verb|readDistanceInches()|, we could just include the code into the \verb|loop()| function and it would work like a charm. For readability reasons we considered that this was the most appropiate way. Furthermore, the reader can have the opportunity to take a look at a different code structure in an Arduino script.
+
+We are starting this code by defining a \textbf{variable}ss what will count centimeters, these is of course the distance from the object (or obstacle) being measured to the ultrasonic sensor.
+
+Let's step into \verb|readDistanceInches()|. This function will return a \textbf{long} value and receives two \textbf{integer} numbers as parameters: the sensor's pin connections.
+
+From \textbf{lines 5 to 11}, the trigger is cleared and reset.
+
+Finally, \textbf{in line 13}, it reads the echo pin and returns the sound wave travel time in microseconds.
+
+\vspace{5mm}
+\textbf{loop() code}
+
+In this step, we need to make a bit of \textbf{conversion of units}. We already know that \verb|readDistanceInches()| is giving us a value in microseconds, but we are interested in the distance.
+
+The speed of sound is the distance travelled per unit of time by a sound wave.
+
+According to the National Weather Service, ``the speed of sound depends on several variables, but the only independent variable we need to calculate the speed of sound is  the temperature of the air.''\cite{speedofsound}.
+
+The National Weather Service provides us as well with a calculator that takes the temperature as a parameter and returns the speed of sound.
+
+The current temperature for us is 1 degree celsius, we have that the speed of sound is 331.84 m/s. However, we are going to be using the average, in order to keep it as general as possible. That is going to be 331 metres per second.
+
+\vspace{5mm}
+Let's now make the conversion from the microseconds we are obtaining from \verb|readDistanceInches()|, to centimeters that is the unit we are interested in.
+
+\[     \frac{10^{-6}s}{1\mu s} \times \frac{331m}{1s} \times \frac{100cm}{1m} = 0,0331cm/\mu s \]
+
+It is really important that we remember that \(0,0331cm/\mu s\) is not our final result, we still have to divide by two. This is because the returned time is the time it takes for the sound wave to travel all the way to the object and back.
+
+\[     \frac{0,0331cm/\mu s}{2} = 0,01655 cm/\mu s \]
+
+Now we understand why in \textbf{line 24} we are multiplying the result of \verb|readDistanceInches()| times \(0,01655\).
+
+Finally, we just display the result and wait a small amount of time before restarting the loop.
+
+\vspace{7mm}
+We have already seen quite a lot of how do sensors work in Arduino. Let's move on now to the other part of the project, the farmOS system, hosted in Raspberry Pi 4.
+
+\newpage
 \section{Raspberry Pi server hosting}
 
 \subsection{Introduction}

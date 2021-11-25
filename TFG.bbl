@@ -183,6 +183,11 @@ dockerhub
 \newblock Docker Hub Container Image Library
 \url{https://hub.docker.com/search?type=image}.
 
+\bibitem[speedofsound()]{speedofsound}
+National Weather Service
+\newblock Speed of Sound Calculator
+\url{https://www.weather.gov/epz/wxcalc_speedofsound}.
+
 \bibitem[diy(2011)]{diy}
 Marco Wolf, Shaun McQuitty
 \newblock Understanding the do-it-yourself consumer: DIY motivations and outcomes, December 2011
