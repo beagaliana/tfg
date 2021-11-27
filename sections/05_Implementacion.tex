@@ -399,6 +399,64 @@ Now we understand why in \textbf{line 24} we are multiplying the result of \verb
 Finally, we just display the result and wait a small amount of time before restarting the loop.
 
 \vspace{7mm}
+\textbf{Testing}
+
+We now understand the code for the ultrasonic sensor. Here's a general view of the set up. As it can be observed in the code, the sensor is connected to pin 7.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{fig/ultrasonic-setup1.jpeg}
+    \caption{General set up for ultrasonic sensor}
+    \label{fig:ultrasonic-setup1}
+\end{figure}
+
+We have positioned the sensor vertically so we can place an object close and see the distance measured.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{fig/ultrasonic-setup2.jpeg}
+    \caption{Ultrasonic sensor positioned vertically}
+    \label{fig:ultrasonic-setup2}
+\end{figure}
+
+In the images below we can see how we have placed a black notebook as the object to be detected by the sensor as well as some of the output images obtained in the serial monitor of Arduino.
+
+\newpage
+\textbf{Distance to notebook: 3 centimeters}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/ultrasonic3cm.png}
+    \caption{Sensor placed 3 centimeters from the object}
+    \label{fig:ultrasonic3cm}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/arduino3cm.png}
+    \caption{Arduino output}
+    \label{fig:arduino3cm}
+\end{figure}
+
+\vspace{5mm}
+\textbf{Distance to notebook: 7 centimeters}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/ultrasonic7cm.png}
+    \caption{Sensor placed 7 centimeters from the object}
+    \label{fig:ultrasonic7cm}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/arduino7cm.png}
+    \caption{Arduino output}
+    \label{fig:arduino7cm}
+\end{figure}
+
+
+\vspace{7mm}
 We have already seen quite a lot of how do sensors work in Arduino. Let's move on now to the other part of the project, the farmOS system, hosted in Raspberry Pi 4.
 
 \newpage
