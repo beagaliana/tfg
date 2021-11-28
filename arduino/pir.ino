@@ -1,6 +1,6 @@
-int ledPin = 13;                // LED 
-int pirPin = 2;                 // PIR Out pin 
-int pirStat = 0;                   // PIR status
+int ledPin = 13;
+int pirPin = 2;
+int pirStat = 0;
 void setup() {
  pinMode(ledPin, OUTPUT);     
  pinMode(pirPin, INPUT);     
@@ -8,11 +8,12 @@ void setup() {
 }
 void loop(){
  pirStat = digitalRead(pirPin); 
- if (pirStat == HIGH) {            // if motion detected
-   digitalWrite(ledPin, HIGH);  // turn LED ON
+ if (pirStat == HIGH) {
+   digitalWrite(ledPin, HIGH);
    Serial.println("Hey I got you");
  } 
  else {
-   digitalWrite(ledPin, LOW); // turn LED OFF if we have no motion
+   digitalWrite(ledPin, LOW);
+   Serial.println("No one's around);
  }
 } 

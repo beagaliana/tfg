@@ -314,9 +314,44 @@ We can see this are values defined in hexadecimal, if we convert this to decimal
 
 Back to the code. If we get a 1 in \verb|pirStat| then we will get a message saying \verb|`Hey! I got you'| and it will turn the led on thanks to \verb|digitalWrite|.
 
-In any other case, we have no movement so the led will be turned off.
+In any other case, we have no movement so the led will be turned off and a message saying that no one is around will be displayed.
 
-\vspace{7mm}
+\vspace{5mm}
+\textbf{Testing}
+
+Here's a view of how the sensor looks. In this precisa moment, is no detecting any movement.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/pir-off.jpeg}
+    \caption{View of the PIR sensor}
+    \label{fig:pir-off}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/pir-no-one.png}
+    \caption{Arduino serial monitor}
+    \label{fig:pir-no-one}
+\end{figure}
+
+We can see how the LED is on when it detects movement.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{fig/pir-on.jpeg}
+    \caption{View of the PIR sensor with LED light on}
+    \label{fig:pir-on}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{fig/pir-got-you.png}
+    \caption{Arduino serial monitor}
+    \label{fig:pir-got-you}
+\end{figure}
+
+\newpage
 \subsection{Ultrasonic sensor}
 This \textbf{ultrasonic distance sensor} provides precise, non-contact distance measurements. It works in the same way as bats do: they emit quick and high-frequency sounds pulses, if they hit an object then then the signal comes back to the sensor.
 
