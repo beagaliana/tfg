@@ -211,6 +211,11 @@ Michael Stenta.
 \newblock URL
   \url{https://farmos.discourse.group/t/farmos-2-x-releases-and-what-to-expect/736}.
 
+\bibitem[nfa()]{nfa}
+\newblock The National Forestry Authority of Uganda
+\newblock URL
+  \url{https://www.nfa.go.ug/}.
+
 \bibitem[wifi()]{wifi}
 Arduino Reference
 \newblock WiFi library
