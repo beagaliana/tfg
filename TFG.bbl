@@ -188,6 +188,11 @@ National Weather Service
 \newblock Speed of Sound Calculator
 \url{https://www.weather.gov/epz/wxcalc_speedofsound}.
 
+\bibitem[post(2014)]{post}
+R. Fielding, J. Reschke
+\newblock Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, June 2014
+\url{https://datatracker.ietf.org/doc/html/rfc7231#section-4.3.3}.
+
 \bibitem[diy(2011)]{diy}
 Marco Wolf, Shaun McQuitty
 \newblock Understanding the do-it-yourself consumer: DIY motivations and outcomes, December 2011
@@ -206,7 +211,11 @@ Michael Stenta.
 \newblock URL
   \url{https://farmos.discourse.group/t/farmos-2-x-releases-and-what-to-expect/736}.
 
-
+\bibitem[wifi()]{wifi}
+Arduino Reference
+\newblock WiFi library
+\newblock URL
+  \url{https://www.arduino.cc/en/Reference/WiFi}.
 
 
 

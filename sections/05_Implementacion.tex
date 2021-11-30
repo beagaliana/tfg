@@ -410,7 +410,7 @@ Finally, \textbf{in line 13}, it reads the echo pin and returns the sound wave t
 \vspace{5mm}
 \textbf{loop() code}
 
-In this step, we need to make a bit of \textbf{conversion of units}. We already know that \verb|readDistanceInches()| is giving us a value in microseconds, but we are interested in the distance.
+In this step, we need to perform a \textbf{conversion of units}. We already know that \verb|readDistanceInches()| is giving us a value in microseconds, but we are interested in the distance.
 
 The speed of sound is the distance travelled per unit of time by a sound wave.
 
@@ -500,17 +500,21 @@ We have already seen quite a lot of how do sensors work in Arduino. Let's move o
 \subsection{Introduction}
 In this chapter we will walk through the installation and set up of a farmOS system in an \textbf{Ubuntu Server} hosted in a \textbf{Raspberry Pi}.
 
+\vspace{6mm}
 \subsection{Raspberry Pi configuration}
 For our particular case we will be using a \textbf{Raspberry Pi 4 Model B computer with 2GB RAM}. The operating system that will be used is Ubuntu Server 20.
 
 The installation is trivial thanks to the Raspberry Pi Imager, an imaging utility provided by Raspberry in March last year. \href{https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#1-overview}{This} is the tutorial provided by Ubuntu on how to install Ubuntu server in Raspberry Pi using the Raspberry Imager.
 
 After following the tutorial and configuring our Internet connection, we have the Raspberry with Ubuntu server up and running. Since we are using a Spanish keyboard layout, we will also change the main layout
+
+\vspace{7mm}
 \section{Drupal and farmOS installation}
 
 Testing different environments is objectively tricky. We sometimes do not know the whole configuration, we might encounter problems in some environments that are not appearing in others, etc. That is to say we sometimes do not know how our program is going to behave because of the features of the environment that it is being run in. This is something far from desirable.
 
 \vspace{5mm}
+\subsection{Docker and OS-level virtualization}
 This is where \textbf{Docker}\cite{docker} plays a role. It allows our program, or in this particular case farmOS, to run isolated from the rest of your machine. It will run in its very own Docker container with everything is needs to correctly be executed to ensure it works seamlessly in any environment.
 
 \begin{figure}[H]
@@ -557,7 +561,7 @@ Another great pro is that Podman uses exactly the same commands than Docker. Eng
 Long story short, Podman is, in general terms, more secure than Dockers and offers a few advantages to be taken into account. Again, we are not going to be using it but we considered it was something worthy to be mentioned in this section.
 
 \vspace{7mm}
-\subsubsection{Getting our hands dirty: farmOS installation}
+\subsection{Getting our hands dirty: farmOS installation}
 Without further ado, let's get to it. First step is to go to the documentation of farmOS. The installation is described as a tutorial so we will not spend much time on doing this. Let's follow the tutorial and see if we success. 
 
 This is the \href{https://farmos.org/hosting/docker/}{link}.
@@ -784,6 +788,31 @@ That command will introduce the value 76.5 and farmOS will make a graphic to dis
 
 That's a small demo of how sensors listener work to help us understand farmOS. Nonetheless, we have added sensor data manually and of course that is not the final goal of this project. Now that we understand the farmOS behaviour, let's see how we can make an HTTP POST request from an Arduino device that can automate this for us.
 
+The protocol used is HTTP, that stands for Hypertext Transfer Protocol, as the reader may already know. It is an application layer protocol and it implements some different methods. More concretely we are interested in the POST\cite{post} method.
+
+In a nutshell, POST requests will be used to send data to the server.
+
+For this implementation, the data that will be sent needs to be defined. We have already seen during this project how to obtain data from the different sensors. We just need to gather that data and send it in a JSON format so that farmOS can understand \textbf{it}
+
+\vspace{5mm}
+This is the format for a POST request
+\begin{verbatim}
+    POST <page> HTTP/1.1
+    Host: <website URL>
+    Content-Type: <content-type>
+    Content-Length: <length of data>
+
+    <data>
+\end{verbatim}
+
+\vspace{7mm}
+So all of this data will go together with the one that is being gathered with the sensors.
+
+\vspace{5mm}
+There are several different implementations for achieving this purpose. Here's a possibily.
+\lstinputlisting{arduino/post_request.ino}
+
+\newpage
 \section{Conclusions}
 A lot of new topics have been covered in this section. Let us draw a few conclusions out of them.
 
